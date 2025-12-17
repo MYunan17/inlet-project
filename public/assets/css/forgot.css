@@ -1,0 +1,128 @@
+/* ========================================= */
+/* 🔑 CSS Variables */
+:root {
+  --color-primary: #2247ab; /* Warna INLET */
+  --color-primary-dark: #1a3695; /* Hover */
+  --color-text-dark: #1f2937;
+  --color-text-body: #374151;
+  --color-background: #f0f2f5;
+  --color-card-bg: #ffffff;
+  --color-border: #d1d5db;
+  --spacing-default: 15px;
+  --spacing-large: 40px;
+}
+
+/* ========================================= */
+/* Body & Container */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--color-background);
+}
+
+.forgot-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: var(--spacing-default);
+  box-sizing: border-box;
+}
+
+.forgot-card {
+  background-color: var(--color-card-bg);
+  padding: var(--spacing-large);
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+.login-title {
+  text-align: center;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* ========================================= */
+/* Form Elements */
+.forgot-form .form-group {
+  margin-bottom: var(--spacing-default);
+}
+
+.forgot-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: var(--color-text-body);
+  font-size: 0.95rem;
+}
+
+.forgot-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.forgot-form input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(34, 71, 171, 0.3);
+}
+
+/* ========================================= */
+/* Button */
+.forgot-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  width: fit-content;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.forgot-btn:hover {
+  background-color: var(--color-primary-dark);
+  transform: scale(1.02);
+}
+
+.forgot-btn span.material-icons-outlined {
+  font-size: 1.2rem;
+}
+
+/* ========================================= */
+/* Alert Messages */
+.alert {
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-default);
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #842029;
+}
+
+.alert-success {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}

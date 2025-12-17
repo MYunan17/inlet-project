@@ -1,0 +1,530 @@
+/* ========================================================== */
+/* 1. VARIABEL DASAR                                         */
+/* ========================================================== */
+:root {
+  --color-primary: #007bff;
+  --color-secondary: #6c757d;
+  --color-info: #17a2b8;
+  --color-success: #28a745;
+  --color-danger: #dc3545;
+  --color-border: #dee2e6;
+  --color-background-light: #f8f9fa;
+  --spacing-default: 15px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #343a40;
+  overflow-x: hidden; /* scroll horizontal hanya di card */
+  margin: 0;
+  padding: 0;
+}
+
+/* ========================================================== */
+/* 2. ADMIN CARD & HEADER                                     */
+/* ========================================================== */
+.inlet-admin-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: var(--spacing-default);
+  margin-bottom: 20px;
+  overflow-x: auto; /* scroll horizontal di card */
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.inlet-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--spacing-default);
+  margin-bottom: var(--spacing-default);
+  border-bottom: 1px solid var(--color-background-light);
+  flex-wrap: wrap;
+}
+
+.inlet-title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #343a40;
+}
+
+/* ========================================================== */
+/* 3. FILTER / SEARCH / BUTTON                                 */
+/* ========================================================== */
+.inlet-filter-form {
+  margin-bottom: var(--spacing-default);
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.filter-row .inlet-form-input,
+.filter-row .inlet-form-select {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.filter-row .inlet-form-input:focus,
+.filter-row .inlet-form-select:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+.filter-row input[type="date"] {
+  flex: 0 0 150px;
+  min-width: 120px;
+}
+
+.filter-row .search-input {
+  flex: 1 1 auto;
+  min-width: 150px;
+}
+
+.filter-row .inlet-btn-info,
+.filter-row .inlet-btn-light {
+  flex: 0 0 100px;
+}
+
+/* Tombol */
+.inlet-btn {
+  border-radius: 6px;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 8px 12px;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.inlet-btn-info {
+  background-color: var(--color-info);
+  color: #fff;
+  border: none;
+}
+
+.inlet-btn-info:hover {
+  background-color: #117a8b;
+}
+
+.inlet-btn-light {
+  background-color: #fff;
+  color: #343a40;
+  border: 1px solid #ccc;
+}
+
+.inlet-btn-light:hover {
+  background-color: #f0f0f0;
+}
+
+/* ========================================================== */
+/* 4. DATA TABLE                                              */
+/* ========================================================== */
+.inlet-table-container {
+  overflow-x: auto;
+  width: 880px;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap; /* otomatis pindah ke baris berikutnya jika tidak muat */
+  gap: 10px; /* jarak antar elemen */
+  max-width: 880px; /* batas maksimal lebar sebelum wrap */
+  width: 100%; /* agar fleksibel mengikuti container */
+  align-items: center; /* rata tengah secara vertikal */
+}
+
+.inlet-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1400px; /* sesuaikan jumlah kolom agar scroll horizontal muncul */
+  table-layout: fixed; /* kolom proporsional */
+}
+
+.inlet-data-table th,
+.inlet-data-table td {
+  padding: 10px;
+  border: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap; /* teks tidak wrap */
+  overflow: hidden;
+  text-overflow: ellipsis; /* teks panjang dipotong */
+}
+
+.inlet-data-table thead th {
+  background-color: var(--color-background-light);
+  font-weight: 600;
+  color: #495057;
+}
+
+/* Action icons */
+.inlet-action-icons a {
+  margin: 0 5px;
+  color: var(--color-secondary);
+  transition: color 0.2s;
+}
+
+.inlet-action-icons a:hover {
+  color: var(--color-primary);
+}
+
+/* Poster image */
+.inlet-data-table td img {
+  display: block;
+  max-width: 50px;
+  max-height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* ========================================================== */
+/* 5. PAGINATION                                             */
+/* ========================================================== */
+.pagination-container {
+  margin-top: var(--spacing-default);
+  display: flex;
+  justify-content: center;
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.page-item {
+  margin: 0 3px;
+}
+
+.page-link {
+  display: block;
+  padding: 6px 12px;
+  color: var(--color-primary);
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+.page-item.disabled .page-link {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-item.active .page-link {
+  background-color: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+/* ========================================================== */
+/* 6. RESPONSIVE (Tablet & Mobile)                            */
+/* ========================================================== */
+@media (max-width: 768px) {
+  .inlet-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .filter-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .filter-row input[type="date"],
+  .filter-row .search-input,
+  .filter-row .inlet-btn-info,
+  .filter-row .inlet-btn-light {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .inlet-data-table {
+    min-width: 1000px; /* tetap ada scroll horizontal */
+  }
+
+  .inlet-data-table th,
+  .inlet-data-table td {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+}
+
+/* Filter tanggal */
+.filter-row input[type="date"] {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fff;
+  flex: 0 0 180px; /* lebar tetap */
+  min-width: 140px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Fokus */
+.filter-row input[type="date"]:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+/* Icon kalender (opsional, untuk browser yang mendukung) */
+.filter-row input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(0.3); /* supaya icon terlihat di tema terang */
+}
+
+/* Row filter search + button */
+.filter-row-2 {
+  display: flex; /* Flex horizontal */
+  align-items: center; /* Vertikal center */
+  gap: 10px; /* Jarak antar elemen */
+  flex-wrap: wrap; /* Wrap di layar kecil */
+  margin-bottom: 10px; /* Jarak bawah */
+}
+
+/* Input search */
+.filter-row-2 .search-input {
+  flex: 1 1 auto; /* Ambil sisa ruang */
+  min-width: 150px; /* Lebar minimum */
+}
+
+/* Tombol Filter dan Reset */
+.filter-row-2 .inlet-btn {
+  flex: 0 0 auto; /* Tombol tetap lebar */
+  white-space: nowrap; /* Jangan wrap teks tombol */
+}
+
+/* Row filter search + button */
+.filter-row-2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+/* Input search */
+.filter-row-2 .search-input {
+  flex: 0 1 250px; /* Maks 250px, tetap bisa mengecil */
+  min-width: 120px; /* Lebar minimum */
+}
+
+/* Tombol Filter dan Reset */
+.filter-row-2 .inlet-btn {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+/* Responsive di layar sempit */
+@media (max-width: 768px) {
+  .filter-row-2 {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-row-2 .search-input,
+  .filter-row-2 .inlet-btn {
+    width: 100%;
+  }
+}
+
+/* Filter select menyesuaikan panjang text */
+.filter-select {
+  width: auto; /* Sesuaikan dengan isi text */
+  min-width: 120px; /* Lebar minimum agar tetap readable */
+  max-width: 300px; /* Opsional: agar tidak terlalu panjang */
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+/* Untuk row filter */
+.filter-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap; /* Jika lebar container kecil, dropdown bisa wrap ke bawah */
+  align-items: center;
+}
+
+.inlet-action-icons a span.material-icons-outlined {
+  color: var(--color-primary, #007bff); /* warna biru misal */
+  font-size: 20px;
+  transition: color 0.2s;
+}
+
+.inlet-action-icons a:hover span.material-icons-outlined {
+  color: var(--color-danger, #dc3545); /* merah saat hover untuk delete */
+}
+
+.inlet-icon-delete {
+  color: var(--color-danger, #dc3545); /* ikon delete merah */
+}
+
+/* ========================================================== */
+/* BUTTON AKSI ADMIN                                         */
+/* ========================================================== */
+.inlet-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Primary action (Edit / Check-in / Checkout) */
+.inlet-action-btn-primary {
+  /* background-color: var(--color-primary); */
+  color: #fff;
+  border: none;
+}
+
+.inlet-action-btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Secondary action (Batal / Lihat / Info) */
+.inlet-action-btn-secondary {
+  background-color: var(--color-secondary);
+  color: #fff;
+  border: none;
+}
+
+.inlet-action-btn-secondary:hover {
+  background-color: #4e555b;
+}
+
+/* Danger action (Hapus / Delete) */
+.inlet-action-btn-danger {
+  /* background-color: var(--color-danger); */
+  color: #fff;
+  border: none;
+}
+
+.inlet-action-btn-danger:hover {
+  background-color: #a71d2a;
+}
+
+/* Icon button kecil tanpa teks */
+.inlet-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--color-secondary);
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.inlet-icon-btn:hover {
+  color: #fff;
+  background-color: var(--color-primary);
+}
+
+.inlet-icon-btn-delete:hover {
+  background-color: var(--color-danger);
+  color: #fff;
+}
+
+/* Icon saja */
+.inlet-icon-btn span.material-icons-outlined {
+  font-size: 18px;
+  vertical-align: middle;
+  pointer-events: none;
+}
+
+/* =====================================================
+   INFO BUTTON (FILTER / SEARCH)
+===================================================== */
+.inlet-btn-info {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  color: #ffffff;
+}
+
+.inlet-btn-info:hover {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(14, 165, 233, 0.35);
+}
+
+.inlet-btn-info:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(14, 165, 233, 0.25);
+}
+
+/* ICON SIZE CONSISTENCY */
+.inlet-btn-info .material-icons-outlined {
+  font-size: 18px;
+}
+.alert-success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+
+/* Container ikon aksi */
+.inlet-action-icons {
+  display: flex;
+  gap: 8px; /* jarak antar ikon */
+}
+
+/* Styling link ikon */
+.inlet-action-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  transition: background-color 0.2s, color 0.2s;
+  color: #555; /* warna default ikon */
+  text-decoration: none;
+}
+
+/* Hover effect */
+.inlet-action-icons a:hover {
+  background-color: #f0f0f0; /* latar hover */
+  color: #1976d2; /* warna ikon saat hover */
+}
+
+/* Spesial untuk tombol delete */
+.inlet-action-icons a.inlet-delete-link:hover {
+  background-color: #ffe6e6; /* merah muda tipis */
+  color: #d32f2f; /* merah ikon */
+}
+
+/* Optional: ikon lebih besar */
+.inlet-action-icons a span.material-icons-outlined {
+  font-size: 20px;
+}

@@ -1,103 +1,194 @@
+<?php 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+$current_page = $current_page ?? 'dashboard';
+$user_name = $_SESSION['name'] ?? 'Undefined';
+$user_role = $_SESSION['role'] ?? 'Undefined';
+
+/**
+ * Base URL berdasarkan role login
+ */
+$base_role_url = match ($user_role) {
+    'admin'   => 'admin',
+    'member'  => 'member',
+    'student' => 'student',
+    default   => 'dashboard'
+};
+
+// --- Definisi menu per role ---
+$role_menus = [
+    'admin' => [
+        'dashboard' => true,
+        'lab' => ['facilities','seminars','workshops',],
+        'research' => ['research','publications'],
+        'resources' => ['items','item_loans','room_bookings'],
+        'users' => ['students','studentattendance','guestbook','borrower'],
+        'admin' => ['news','events','announcements','gallery','contact','users']
+    ],
+    'member' => [
+        'dashboard' => true,
+        'lab' => ['seminars','workshops',],
+        'research' => ['research','publications'],
+        'users' => ['students','studentattendance']
+    ],
+    'student' => [
+        'dashboard' => true,
+        'users' => ['studentattendance']
+    ]
+];
+
+$menus = $role_menus[$user_role] ?? [];
+
+// status aktif submenu
+$is_lab_active       = isset($menus['lab']) && in_array($current_page, $menus['lab']);
+$is_research_active  = isset($menus['research']) && in_array($current_page, $menus['research']);
+$is_resource_active  = isset($menus['resources']) && in_array($current_page, $menus['resources']);
+$is_user_active      = isset($menus['users']) && in_array($current_page, $menus['users']);
+$is_admin_active     = isset($menus['admin']) && in_array($current_page, $menus['admin']);
+?>
+
+<!-- MINI TOOLBAR -->
 <div class="mini-toolbar">
-    
-    <div class="mini-toolbar-top-icons">
-        <div class="toolbar-item sidebar-toggle-btn">
-            <span class="material-icons-outlined">menu</span>
-        </div>
-        
-        <div class="toolbar-item" style="padding-top: 10px;">
-            <img src="<?php echo BASE_URL; ?>assets/images/our-team/farid-angga.jpg" alt="Admin Profile" class="profile-img">
-        </div>
-        
-        <div class="toolbar-item">
-            <span class="material-icons-outlined">notifications</span>
-        </div>
-        <div class="toolbar-item">
-            <span class="material-icons-outlined">settings</span>
-        </div>
+    <div class="mini-toolbar-bottom logout-left">
+        <a href="<?= BASE_URL; ?>auth/logout" class="toolbar-item" title="Logout">
+            <span class="material-icons-outlined">logout</span>
+        </a>
     </div>
-    
-    <div class="mini-toolbar-bottom">
-    <a href="<?php echo BASE_URL; ?>auth/logout" class="toolbar-item" title="Logout">
-        <span class="material-icons-outlined">logout</span>
-    </a>
 </div>
 
-</div>
-
+<!-- SIDEBAR -->
 <div class="sidebar">
     <div class="sidebar-top">
+
+        <!-- LOGO -->
         <div class="sidebar-header">
-            <a href="<?php echo BASE_URL; ?>admin/dashboard"> 
-                <img src="<?php echo BASE_URL; ?>assets/images/logo-1.png" alt="INLET Logo" class="logo-img">
+            <a href="<?= BASE_URL . $base_role_url; ?>/dashboard">
+                <img src="<?= BASE_URL; ?>assets/images/logo-1.png" class="logo-img" alt="INLET Logo">
             </a>
-            </div>
-        
-        <ul class="main-menu"> <li class="<?= (isset($current_page) && $current_page == 'dashboard') ? 'active' : ''; ?>">
-                <a href="<?php echo BASE_URL; ?>admin/dashboard">
-                    <span class="material-icons-outlined">dashboard</span>
-                    Dashboard
+        </div>
+
+        <!-- USER INFO -->
+        <div class="sidebar-user-info">
+            <span class="user-name"><?= htmlspecialchars($user_name); ?></span>
+            <span class="user-role"><?= htmlspecialchars($user_role); ?></span>
+        </div>
+
+        <ul class="main-menu">
+
+            <!-- DASHBOARD -->
+            <?php if(isset($menus['dashboard'])): ?>
+            <li class="<?= ($current_page === 'dashboard') ? 'active' : ''; ?>">
+                <a href="<?= BASE_URL . $base_role_url; ?>/dashboard">
+                    <div class="menu-item-content">
+                        <span class="material-icons-outlined">dashboard</span>
+                        Dashboard
+                    </div>
                 </a>
             </li>
+            <?php endif; ?>
 
-            <?php 
-            // Cek apakah salah satu submenu konten aktif
-            $konten_pages = ['news', 'events', 'announcements'];
-            $is_konten_active = isset($current_page) && in_array($current_page, $konten_pages); 
-            ?>
-            <li class="has-submenu menu-toggle-target <?= $is_konten_active ? 'active expanded' : ''; ?>">
+            <!-- LAB -->
+            <?php if(isset($menus['lab'])): ?>
+            <li class="has-submenu <?= $is_lab_active ? 'active expanded' : ''; ?>">
                 <a href="#" class="menu-toggle">
-                    <span class="material-icons-outlined">description</span>
-                    Konten
+                    <div class="menu-item-content">
+                        <span class="material-icons-outlined">science</span>
+                        Manajemen Lab
+                    </div>
                     <span class="material-icons-outlined expand-icon">expand_more</span>
                 </a>
                 <ul class="submenu">
-                    <li class="<?= (isset($current_page) && $current_page == 'news') ? 'active' : ''; ?>">
-                        <a href="<?php echo BASE_URL; ?>admin/news">
-                            <span class="material-icons-outlined">article</span> Berita
+                    <?php foreach($menus['lab'] as $lab_page): ?>
+                    <li class="<?= ($current_page === $lab_page) ? 'active' : ''; ?>">
+                        <a href="<?= BASE_URL . $base_role_url . '/' . $lab_page; ?>">
+                            <span class="material-icons-outlined">
+                                <?= match($lab_page) {
+                                    'facility'   => 'build',
+                                    'seminars'   => 'record_voice_over',
+                                    'workshops'  => 'handyman',
+                                    'practicums' => 'auto_stories',
+                                    default      => 'science'
+                                }; ?>
+                            </span>
+                            <?= ucfirst($lab_page); ?>
                         </a>
                     </li>
-                    <li class="<?= (isset($current_page) && $current_page == 'events') ? 'active' : ''; ?>">
-                        <a href="<?php echo BASE_URL; ?>admin/events">
-                            <span class="material-icons-outlined">event</span> Acara
-                        </a>
-                    </li>
-                    <li class="<?= (isset($current_page) && $current_page == 'announcements') ? 'active' : ''; ?>">
-                        <a href="<?php echo BASE_URL; ?>admin/announcements">
-                            <span class="material-icons-outlined">campaign</span> Pengumuman
-                        </a>
-                    </li>
+                    <?php endforeach; ?>
                 </ul>
             </li>
-            
-            <li class="<?= (isset($current_page) && $current_page == 'tamu') ? 'active' : ''; ?>">
-                <a href="<?php echo BASE_URL; ?>admin/tamu">
-                    <span class="material-icons-outlined">book</span>
-                    Buku Tamu
+            <?php endif; ?>
+
+            <!-- RESEARCH -->
+            <?php if(isset($menus['research'])): ?>
+            <li class="has-submenu <?= $is_research_active ? 'active expanded' : ''; ?>">
+                <a href="#" class="menu-toggle">
+                    <div class="menu-item-content">
+                        <span class="material-icons-outlined">storage</span>
+                        Riset & Publikasi
+                    </div>
+                    <span class="material-icons-outlined expand-icon">expand_more</span>
                 </a>
+                <ul class="submenu">
+                    <?php foreach($menus['research'] as $res_page): ?>
+                    <li class="<?= ($current_page === $res_page) ? 'active' : ''; ?>">
+                        <a href="<?= BASE_URL . $base_role_url . '/' . $res_page; ?>">
+                            <span class="material-icons-outlined">library_books</span>
+                            <?= ucfirst($res_page); ?>
+                        </a>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
             </li>
-            
-            <li class="<?= (isset($current_page) && $current_page == 'absensi') ? 'active' : ''; ?>">
-                <a href="<?php echo BASE_URL; ?>admin/absensi">
-                    <span class="material-icons-outlined">person_add_alt_1</span>
-                    Absensi
+            <?php endif; ?>
+
+            <!-- USERS -->
+            <?php if(isset($menus['users'])): ?>
+            <li class="has-submenu <?= $is_user_active ? 'active expanded' : ''; ?>">
+                <a href="#" class="menu-toggle">
+                    <div class="menu-item-content">
+                        <span class="material-icons-outlined">group</span>
+                        Pengguna & Kehadiran
+                    </div>
+                    <span class="material-icons-outlined expand-icon">expand_more</span>
                 </a>
+                <ul class="submenu">
+                    <?php foreach($menus['users'] as $user_page): ?>
+                    <li class="<?= ($current_page === $user_page) ? 'active' : ''; ?>">
+                        <a href="<?= BASE_URL . $base_role_url . '/' . $user_page; ?>">
+                            <span class="material-icons-outlined">person</span>
+                            <?= ucfirst($user_page); ?>
+                        </a>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
             </li>
-            
-            <li class="<?= (isset($current_page) && $current_page == 'peminjaman') ? 'active' : ''; ?>">
-                <a href="<?php echo BASE_URL; ?>admin/peminjaman">
-                    <span class="material-icons-outlined">note_add</span>
-                    Peminjaman
+            <?php endif; ?>
+
+            <!-- ADMIN (KHUSUS ADMIN) -->
+            <?php if(isset($menus['admin'])): ?>
+            <li class="has-submenu <?= $is_admin_active ? 'active expanded' : ''; ?>">
+                <a href="#" class="menu-toggle">
+                    <div class="menu-item-content">
+                        <span class="material-icons-outlined">settings_suggest</span>
+                        Administrasi
+                    </div>
+                    <span class="material-icons-outlined expand-icon">expand_more</span>
                 </a>
+                <ul class="submenu">
+                    <?php foreach($menus['admin'] as $admin_page): ?>
+                    <li class="<?= ($current_page === $admin_page) ? 'active' : ''; ?>">
+                        <a href="<?= BASE_URL . $base_role_url . '/' . $admin_page; ?>">
+                            <span class="material-icons-outlined">admin_panel_settings</span>
+                            <?= ucfirst($admin_page); ?>
+                        </a>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
             </li>
-            
-            <li class="<?= (isset($current_page) && $current_page == 'statistik') ? 'active' : ''; ?>">
-                <a href="<?php echo BASE_URL; ?>admin/statistik">
-                    <span class="material-icons-outlined">analytics</span>
-                    Pengunjung
-                </a>
-            </li>
+            <?php endif; ?>
+
         </ul>
     </div>
-    
 </div>

@@ -1,6 +1,6 @@
 <?php
 // ASUMSI: BASE_URL sudah didefinisikan, dan $error (pesan error dari Controller, jika ada) sudah diekstrak.
-$error_message = $error ?? null; 
+$error_message = $error ?? null;
 $old_title = htmlspecialchars($_POST['title'] ?? '');
 $old_body = htmlspecialchars($_POST['body'] ?? '');
 $old_published_checked = (isset($_POST['published']) && $_POST['published'] == '1') ? 'checked' : '';
@@ -34,13 +34,19 @@ $old_published_checked = (isset($_POST['published']) && $_POST['published'] == '
                           style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;"><?php echo $old_body; ?></textarea>
             </div>
             
+            <!-- Gambar Utama -->
             <div class="form-group" style="margin-bottom: 20px;">
                 <label for="image" style="display: block; font-weight: bold; margin-bottom: 5px;">Gambar Utama (Max. 2MB)</label>
                 <input type="file" name="image" id="image" class="form-control-file" accept="image/*" 
-                       style="padding: 5px 0;">
+                       style="padding: 5px 0;" onchange="previewImage();">
                 <small class="form-text text-muted" style="display: block; margin-top: 5px; color: #6c757d;">Pilih file gambar beresolusi tinggi (JPG, PNG).</small>
+                
+                <!-- Gambar Pratinjau -->
+                <img id="imagePreview" src="#" alt="Pratinjau Gambar" 
+                     style="display: none; max-width: 100%; height: auto; margin-top: 15px; border: 2px solid #ddd; border-radius: 4px;">
             </div>
 
+            <!-- Publikasikan Checkbox -->
             <div class="form-group form-group-checkbox" style="margin-bottom: 30px;">
                 <input type="checkbox" name="published" id="published" value="1" 
                        <?php echo $old_published_checked; ?>
@@ -49,6 +55,7 @@ $old_published_checked = (isset($_POST['published']) && $_POST['published'] == '
                 <small class="form-text text-muted" style="display: block; margin-top: 5px; color: #6c757d;">Centang untuk langsung ditampilkan di halaman publik.</small>
             </div>
 
+            <!-- Tombol Submit -->
             <div class="form-group form-actions">
                 <button type="submit" class="inlet-btn inlet-btn-primary" style="padding: 10px 20px; background-color: #10b981; color: white; border: none; border-radius: 4px; cursor: pointer;">
                     <span class="material-icons-outlined" style="vertical-align: middle;">save</span> Simpan Berita
@@ -59,3 +66,21 @@ $old_published_checked = (isset($_POST['published']) && $_POST['published'] == '
         </form>
     </div>
 </div>
+
+<script>
+// Fungsi untuk menampilkan pratinjau gambar
+function previewImage() {
+    var file = document.getElementById('image').files[0];
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+        var imagePreview = document.getElementById('imagePreview');
+        imagePreview.src = e.target.result;
+        imagePreview.style.display = 'block';  // Menampilkan gambar pratinjau
+    };
+    
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
+</script>

@@ -1,0 +1,275 @@
+/* --- CONTAINER & CARD STYLES --- */
+.inlet-admin-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.inlet-card-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.inlet-title {
+  font-size: 1.5rem;
+  color: #1f2937;
+  margin: 0;
+}
+
+.inlet-card-body {
+  padding: 20px;
+}
+
+/* --- FORM ELEMENTS --- */
+.inlet-form .form-group {
+  margin-bottom: 20px;
+}
+
+.inlet-form label {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+/* Style untuk semua input teks dan textarea */
+.inlet-form .form-control,
+.inlet-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  box-sizing: border-box; /* Penting agar padding tidak menambah lebar */
+  transition: border-color 0.2s ease;
+  font-size: 1rem;
+}
+
+.inlet-form .form-control:focus,
+.inlet-form textarea:focus {
+  border-color: #3b82f6; /* Warna biru saat fokus */
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+/* --- CHECKBOX --- */
+.form-group-checkbox {
+  display: flex;
+  align-items: center;
+  padding-left: 0; /* Hapus padding default */
+}
+
+.form-group-checkbox input[type="checkbox"] {
+  /* Reset gaya input file/checkbox bawaan */
+  width: auto;
+  height: auto;
+  margin-right: 8px;
+}
+
+.form-group-checkbox label {
+  font-weight: normal;
+  color: #374151;
+  margin-bottom: 0;
+}
+
+/* --- ALERT/ERROR MESSAGE --- */
+.alert-danger {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #fca5a5;
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border-radius: 4px;
+}
+
+/* --- ACTION BUTTONS --- */
+.form-actions {
+  padding-top: 15px;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 25px;
+}
+
+.inlet-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none; /* Untuk tag <a> Batal */
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.inlet-btn span.material-icons-outlined {
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.inlet-btn-primary {
+  /* Warna Hijau untuk Aksi Utama (Simpan) */
+  background-color: #10b981;
+  color: white;
+}
+.inlet-btn-primary:hover {
+  background-color: #059669;
+}
+
+.inlet-btn-secondary {
+  /* Warna Abu-abu untuk Aksi Sekunder (Batal) */
+  background-color: #6b7280;
+  color: white;
+  margin-left: 10px;
+}
+.inlet-btn-secondary:hover {
+  background-color: #4b5563;
+}
+
+/* Catatan: Sebagian besar styling sudah diatur di file CSS utama Anda */
+
+/* Wrapper untuk setiap grup form */
+.form-group {
+  margin-bottom: 25px; /* Memberi jarak lebih antar grup form */
+}
+
+/* Label */
+.form-label {
+  display: block;
+  font-weight: 600; /* Medium bold */
+  margin-bottom: 5px;
+  color: var(--color-text-dark);
+}
+.required {
+  color: var(--color-danger, #ef4444); /* Warna merah untuk tanda bintang */
+}
+
+/* Kelas Input/Textarea/Select (sudah ada di CSS utama) */
+.inlet-form-input,
+.inlet-form-select {
+  width: 100%;
+  box-sizing: border-box; /* Penting untuk padding agar width tetap 100% */
+}
+
+/* Alert (Pesan Error) */
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.alert-danger {
+  border: 1px solid #fca5a5;
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+/* Pratinjau Gambar */
+.image-preview {
+  display: none;
+  max-width: 300px;
+  height: auto;
+  margin-top: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+/* Tombol Aksi */
+.form-actions {
+  margin-top: 30px;
+}
+
+/* Styling Tombol (Asumsi sudah ada di CSS utama) */
+.inlet-btn-primary {
+  background-color: var(
+    --color-success,
+    #10b981
+  ); /* Menggunakan warna hijau/success */
+}
+.inlet-btn-secondary {
+  background-color: var(--color-secondary, #6b7280);
+  color: white;
+}
+
+/* =====================================================
+   INLET BUTTON BASE
+===================================================== */
+.inlet-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 18px;
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+
+  cursor: pointer;
+  border: none;
+
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* =====================================================
+   ICON
+===================================================== */
+.inlet-btn .material-icons-outlined {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* =====================================================
+   PRIMARY BUTTON
+===================================================== */
+.inlet-btn-primary {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: #ffffff;
+}
+
+.inlet-btn-primary:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.35);
+}
+
+.inlet-btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.25);
+}
+
+/* =====================================================
+   SECONDARY BUTTON
+===================================================== */
+.inlet-btn-secondary {
+  background-color: #f8fafc;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+}
+
+.inlet-btn-secondary:hover {
+  background-color: #e2e8f0;
+  color: #1e293b;
+  transform: translateY(-1px);
+}
+
+/* =====================================================
+   FORM ACTIONS WRAPPER
+===================================================== */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* =====================================================
+   DISABLED STATE (OPTIONAL)
+===================================================== */
+.inlet-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}

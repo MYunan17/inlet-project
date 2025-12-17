@@ -7,8 +7,8 @@ require_once ROOT_PATH . 'app/models/User.php';
 require_once ROOT_PATH . 'app/core/Database.php'; // Ganti path jika berbeda
 
 // --- DATA ADMIN YANG INGIN ANDA BUAT ---
-$username = 'ambatukam';
-$email = 'ambatukam@gmail.com';
+$username = 'fauzi';
+$email = 'fauzi@gmail.com';
 $password_raw = 'admin1234'; // Ganti dengan password kuat Anda
 
 try {
@@ -21,7 +21,7 @@ try {
     }
     
     // Buat user baru dengan password yang otomatis di-hash
-    if ($userModel->createInitialAdmin($username, $email, $password_raw, 'admin')) {
+    if ($userModel->createInitialAdmin($username, $email, $password_raw, 'staff')) {
         echo "✅ User Admin berhasil dibuat!\n";
         echo "Username: $username\n";
         echo "Password: $password_raw\n";

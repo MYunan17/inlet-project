@@ -1,0 +1,110 @@
+/* --- Halaman Buku Tamu (views/public/guest_book.php) --- */
+
+.guest-book-container {
+  max-width: 600px; /* Batasi lebar form agar fokus */
+  margin: 40px auto; /* Pusatkan form di tengah halaman */
+  padding: 20px;
+  background-color: #f9f9f9; /* Background ringan */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sedikit bayangan lembut */
+}
+
+.page-title {
+  text-align: center;
+  color: #2c3e50; /* Warna gelap untuk judul */
+  margin-bottom: 5px;
+}
+
+.page-subtitle {
+  text-align: center;
+  color: #7f8c8d; /* Warna abu-abu untuk subjudul */
+  margin-bottom: 30px;
+  font-size: 1rem;
+}
+
+/* --- Styling Form Dasar --- */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #34495e;
+}
+
+.standard-form input[type="text"],
+.standard-form input[type="tel"],
+.standard-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  box-sizing: border-box; /* Pastikan padding tidak menambah lebar total */
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.standard-form input:focus,
+.standard-form textarea:focus {
+  border-color: #3498db; /* Warna fokus biru INLET */
+  outline: none;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+.standard-form textarea {
+  resize: vertical; /* Izinkan pengguna mengubah tinggi, tapi tidak lebar */
+}
+
+/* --- Styling Tombol Submit --- */
+
+.form-action {
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* --- Responsive Sederhana --- */
+@media (max-width: 768px) {
+  .guest-book-container {
+    margin: 20px 10px;
+    padding: 15px;
+  }
+}
+
+/* --- Styling Form Dasar --- */
+
+/* ... kode form-group dan label lainnya ... */
+
+.standard-form input[type="text"],
+.standard-form input[type="tel"],
+.standard-form input[type="email"], /* ✅ TAMBAHAN: Styling untuk input email */
+.standard-form select,              /* ✅ TAMBAHAN: Styling untuk select dropdown */
+.standard-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+/* --- Styling Fokus --- */
+
+.standard-form input:focus,
+.standard-form select:focus,       /* ✅ TAMBAHAN: Styling fokus untuk select */
+.standard-form textarea:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+/* Opsional: Hapus tampilan default browser pada select untuk konsistensi */
+.standard-form select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: white;
+}

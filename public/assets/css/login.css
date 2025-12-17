@@ -1,5 +1,28 @@
+/* ========================================= */
+/* 🔑 CSS Variables (Untuk Konsistensi) */
+/* ========================================= */
+:root {
+  --color-primary: #3b82f6; /* Biru Utama (Semula #3b82f6) */
+  --color-primary-dark: #2563eb; /* Biru Hover */
+  --color-text-dark: #1f2937; /* Teks Heading */
+  --color-text-body: #374151; /* Teks Label */
+  --color-background: #f0f2f5; /* Latar Belakang */
+  --color-card-bg: #ffffff; /* Latar Belakang Card */
+  --color-border: #d1d5db; /* Border Input */
+  --spacing-default: 15px;
+  --spacing-large: 40px;
+}
+
+/* ========================================= */
+/* <body> & Layout */
+/* ========================================= */
 body {
-  overflow: hidden;
+  /* Hapus overflow: hidden; agar pengguna dapat scroll jika diperlukan, 
+       meskipun container fix di tengah. */
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--color-background);
 }
 
 .login-container {
@@ -7,50 +30,208 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f3f4f6; /* Warna latar belakang ringan */
-}
-.login-card {
-  background-color: white;
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-}
-.login-title {
-  text-align: center;
-  color: #1f2937;
-  margin-bottom: 25px;
-  font-size: 1.8rem;
-}
-.login-form .form-group {
-  margin-bottom: 15px;
-}
-.login-form label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: 600;
-  color: #374151;
-}
-.login-form input {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
+  padding: var(--spacing-default); /* Tambah padding agar aman di HP */
   box-sizing: border-box;
 }
-.login-btn {
+
+/* ========================================= */
+/* 💳 Login Card Style */
+/* ========================================= */
+.login-card {
+  background-color: var(--color-card-bg);
+  padding: var(--spacing-large);
+  border-radius: 8px;
+  /* Meningkatkan bayangan agar lebih menonjol */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   width: 100%;
-  padding: 10px;
-  background-color: #3b82f6; /* Warna biru primer */
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+.login-title {
+  text-align: center;
+  color: var(--color-text-dark);
+  margin-bottom: 20px; /* Sedikit dikurangi */
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* ========================================= */
+/* 📝 Form Elements */
+/* ========================================= */
+.login-form .form-group {
+  margin-bottom: var(--spacing-default);
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: var(--color-text-body);
+  font-size: 0.95rem; /* Sedikit lebih kecil agar lebih fokus */
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px; /* Dibuat sedikit lebih tinggi */
+  border: 1px solid var(--color-border);
+  border-radius: 6px; /* Dibuat sedikit lebih membulat */
+  box-sizing: border-box;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Perbaikan UX: Focus State yang jelas */
+.login-form input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3); /* Ring cahaya biru */
+}
+
+/* ========================================= */
+/* 🚀 Button Style */
+/* ========================================= */
+.login-btn {
+  /* Pastikan tinggi padding konsisten */
+  padding: 12px;
+
+  background-color: var(--color-primary);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 700; /* Dibuat lebih tebal */
+  margin-top: 20px; /* Jarak yang lebih lebar dari input terakhir */
+  transition: background-color 0.2s, transform 0.1s;
+
+  /* Pewarisan dari input, ini tetap dipertahankan */
+  width: 100%;
+  display: block;
+}
+
+.login-btn:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.login-btn:active {
+  transform: translateY(1px); /* Efek saat diklik */
+}
+
+/* Style untuk link lupa password */
+.forgot-password {
+  text-align: right; /* posisikan ke kanan */
+  margin-top: 10px; /* jarak dari input form sebelumnya */
+}
+
+.forgot-link {
+  font-size: 0.9rem; /* ukuran sedikit lebih kecil */
+  color: #3498db; /* warna biru menarik */
+  text-decoration: none; /* hilangkan garis bawah default */
+  transition: color 0.2s ease, transform 0.2s ease; /* efek halus */
+}
+
+.forgot-link:hover {
+  color: #1d6fa5; /* warna berubah saat hover */
+  text-decoration: underline; /* bisa tambahkan underline saat hover */
+  transform: scale(1.05); /* efek zoom kecil saat hover */
+  cursor: pointer;
+}
+
+/* Forgot Password Link */
+.forgot-password {
+  text-align: right;
   margin-top: 10px;
 }
+
+.forgot-link {
+  font-size: 0.9rem;
+  color: #2247ab; /* warna INLET */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.forgot-link:hover {
+  color: #1a3695; /* versi lebih gelap saat hover */
+  text-decoration: underline;
+}
+
+/* Login Button */
+.login-btn {
+  display: inline-flex; /* pakai flex biar icon & text sejajar */
+  align-items: center; /* vertical align sejajar */
+  justify-content: center;
+  gap: 8px; /* jarak antara icon & text */
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: #2247ab; /* warna INLET */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin: auto;
+  text-align: center;
+  margin: 10px 0;
+}
+
 .login-btn:hover {
-  background-color: #2563eb;
+  background-color: #1a3695; /* hover color sedikit lebih gelap */
+  transform: scale(1.02);
+}
+
+.login-btn span.material-icons-outlined {
+  font-size: 1.2rem; /* sesuaikan ukuran icon */
+}
+
+/* Container umum untuk alert */
+.alert {
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Warna untuk error */
+.alert-danger {
+  background-color: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
+
+/* Warna untuk success */
+.alert-success {
+  background-color: #d1e7dd;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+
+/* Tombol close (opsional) */
+.alert .close-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  color: inherit;
+  margin-left: 10px;
+}
+
+/* Animasi fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

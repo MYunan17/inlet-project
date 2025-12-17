@@ -1,11 +1,16 @@
 /* ================================================= */
-/* 1. STYLING GLOBAL & FONT                      */
+/* 1. GLOBAL STYLING & TYPOGRAPHY                  */
 /* ================================================= */
 
 body {
-  color: #333333;
+  color: #333;
   font-size: 1rem;
   line-height: 1.6;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
 }
 
 a {
@@ -15,17 +20,18 @@ a {
 }
 
 a:hover {
-  color: white;
+  color: #007bff;
 }
 
+h1,
 h2,
 h3,
 h4,
 h5 {
-  color: #1a237e;
-  font-weight: 600;
+  font-weight: 700;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
+  color: #1a237e;
 }
 
 h2 {
@@ -36,592 +42,331 @@ h2 {
 }
 
 /* ================================================= */
-/* 2. STYLING TOMBOL UTAMA (PRIMARY BUTTON)      */
+/* 2. BUTTON PRIMARY                                */
 /* ================================================= */
 
 .btn-primary {
-  background-color: none;
-  color: white;
-  border-color: white;
+  background-color: white;
+  color: #1a237e;
+  border: 2px solid #1a237e;
   font-weight: bold;
   padding: 0.75rem 1.5rem;
-  border: 1px solid white;
+  border-radius: 50px;
   transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
   background-color: white;
   color: #1a237e;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 /* ================================================= */
-/* 3. HERO SECTION & PERGESERAN KANAN            */
+/* 3. HERO SECTION                                  */
 /* ================================================= */
 
 .hero-section {
   min-height: 80vh;
-  background-color: #1a237e;
   color: #ffffff;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-
-  /* Latar Belakang Gambar & Overlay */
-  background-image: url("../images/gallery/2.jpg");
+  padding: 5rem 0;
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../images/gallery/2.jpg");
   background-size: cover;
   background-position: center;
-  position: relative;
-  overflow: hidden; /* Penting untuk mengontrol konten */
-}
-
-/* Media Query untuk Tampilan Mobile */
-@media (max-width: 991.98px) {
-  .hero-section {
-    /* 1. Menghilangkan Gambar Latar Belakang */
-    background-image: none;
-
-    /* 2. Menghilangkan Warna Latar Belakang */
-    /* Anda memiliki background-color: #1a237e; di CSS default. 
-           Untuk membuatnya transparan ke body atau elemen di belakangnya, gunakan: */
-    background-color: transparent;
-
-    /* Jika Anda ingin warna berbeda (bukan transparan): */
-    /* background-color: #f0f0f0; */
-
-    /* Opsional: Sesuaikan tinggi jika gambar background sudah tidak ada */
-    min-height: auto;
-  }
+  overflow: hidden;
 }
 
 .hero-section::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 1;
 }
 
 .hero-section .container {
   position: relative;
   z-index: 2;
-  /* Lebar container akan dibatasi di media query */
-  width: 100%;
 }
 
 .hero-slogan {
-  font-size: 1rem !important; /* Coba naikkan ukuran, dan tambahkan !important */
-  margin-bottom: 1.5rem !important;
-  font-weight: 100;
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
 }
 
-.hero-section h1 {
-  letter-spacing: 5px;
-}
-
-/* ------------------------------------------------- */
-/* SOLUSI PERGESERAN KE KANAN (Desktop Only)      */
-/* ------------------------------------------------- */
-@media (min-width: 768px) {
-  /* 1. Atur container agar konten hanya mengambil 50% dari lebar */
-  .hero-section .container {
-    /* PENTING: Batasi lebar container yang menampung konten */
-    width: 50%;
-    max-width: 500px; /* Batas maksimum agar tidak terlalu lebar */
-
-    /* INI KODE UTAMA UNTUK MENDORONG KE KANAN */
-    margin-left: 150px; /* Mendorong semua sisa ruang ke kiri */
-    margin-right: 0 !important; /* Menempel ke sisi kanan */
-
-    /* Text alignment untuk desktop: sejajar kiri */
-    text-align: left !important;
-  }
-
-  /* 2. Batalkan text-center dan d-flex pada section induk */
-  .hero-section {
-    /* Karena kita menggeser anak (container), kita perlu memastikan 
-           induk tidak ikut-ikutan center/align. */
-    justify-content: unset !important;
-    text-align: unset !important;
-  }
-}
-
-/* style.css (Perbaikan Font) */
-
-/* Pengaturan Font Dasar Seluruh Halaman */
-body {
-  /* Font: Gunakan font yang sudah dipanggil di Header */
-
-  /* Warna Teks Utama */
-  color: #333333;
-
-  /* Ukuran Font Dasar */
-  font-size: 1rem;
-  line-height: 1.6;
-
-  /* Gunakan ketebalan normal */
-  font-weight: 400;
-}
-
-/* Styling untuk semua Heading (H1-H5) */
-h1,
-h2,
-h3,
-h4,
-h5 {
-  /* Gunakan ketebalan yang lebih kuat untuk heading */
-  font-weight: 700;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.inlet-acronym {
-  /* Styling INLET (agar menonjol) */
-  font-weight: bold;
-}
-
-.inlet-fullname {
-  margin-left: 1rem;
-  /* Styling Kepanjangan */
-  font-size: 0.9rem;
-}
-
-/* CSS untuk Desktop (Layar > 992px) */
-/* ------------------------------------ */
-
-#hero-banner {
-  /* Terapkan gambar latar belakang untuk desktop */
-  background-image: url("../images/gallery/5.jpg");
-  background-size: cover;
-  background-position: center;
-  /* Atribut background lainnya... */
-}
-
-#hero-banner {
-  min-height: 90vh;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-  position: relative;
-  overflow: hidden;
-
-  /* 💡 KODE PERBAIKAN: Tambahkan linear-gradient(warna, warna) sebelum url() */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../images/gallery/17.jpg");
-
-  background-size: cover;
-  background-position: center;
-}
-
-.mobile-hero-image-container {
-  /* Sembunyikan gambar konten saat di desktop */
-  display: none;
-}
-
-/* CSS untuk Mobile (Layar < 992px) */
-/* ------------------------------------ */
-
-@media (max-width: 991.98px) {
-  #hero-banner {
-    /* Hapus atau ganti gambar latar belakang saat di mobile */
-    background-image: none;
-    /* Pastikan tingginya auto atau sesuai konten jika background dihapus */
-    height: auto;
-  }
-
-  .hero-content {
-    /* Gunakan Flexbox untuk mengatur urutan */
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    /* text-align: center; */
-  }
-
-  .mobile-hero-image-container {
-    /* Tampilkan gambar konten saat di mobile */
-    display: block;
-    width: 100%;
-    margin-bottom: 20px; /* Beri jarak di bawah gambar */
-    /* Kita beri order paling kecil agar muncul paling atas */
-    order: -1;
-  }
-
-  .mobile-hero-image-container img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-}
-
-@media (max-width: 991.98px) {
-  /* 1. Teks Rata Tengah */
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    /* 💡 Pastikan semua teks di dalam hero-content rata tengah */
-    /* text-align: center; */
-  }
-
-  /* 2. Pengaturan Gambar Mobile */
-  .mobile-hero-image-container {
-    display: block;
-    width: 100%;
-    margin-bottom: 20px;
-    order: -1;
-
-    /* 💡 Kontainer gambar dibuat lebih pendek */
-    height: 300px; /* Coba nilai ini. Sesuaikan sesuai kebutuhan, misalnya 150px atau 250px */
-    overflow: hidden; /* Penting! Menyembunyikan bagian gambar yang melebihi batas tinggi */
-  }
-
-  .mobile-hero-image-container img {
-    width: 100%;
-    /* Atur tinggi otomatis agar gambar tidak terdistorsi (stretch) */
-    height: auto;
-    display: block;
-
-    /* 💡 Pastikan gambar mencakup seluruh area kontainer dan memotong kelebihannya */
-    object-fit: cover;
-
-    /* Jika gambar terlalu tinggi, Anda bisa menggesernya ke atas/bawah agar bagian yang penting terlihat */
-    /* Contoh: geser gambar sedikit ke atas */
-    /* transform: translateY(-20%); */
-  }
-}
-
-@media (max-width: 991.98px) {
-  /* ... kode sebelumnya ... */
-
-  .mobile-hero-image-container {
-    display: block;
-    width: 100%;
-    margin-bottom: 20px;
-    order: -1;
-    height: 300px; /* Tinggi yang Anda tentukan */
-    overflow: hidden;
-  }
-
-  .mobile-hero-image-container img {
-    width: 100%;
-    height: 100%; /* Ubah menjadi 100% dari kontainer */
-    display: block;
-
-    /* 💡 Pastikan gambar menutupi area dan terpotong dari tengah */
-    object-fit: cover;
-    object-position: center; /* <<< INI YANG PALING PENTING */
-  }
-
-  /* ... kode berikutnya ... */
-}
-
-@media (max-width: 991.98px) {
-  .hero-slogan {
-    order: 1;
-    /* Hapus margin atas default, atau buat kecil */
-    margin-top: 5px;
-    margin-bottom: 15px; /* Jarak antara slogan dan tombol */
-    padding: 0 15px; /* Opsional: beri padding horizontal jika terlalu lebar */
-  }
-
-  .btn-primary {
-    order: 1;
-    /* Pastikan tombol tidak punya margin-top yang besar */
-    margin-top: 0;
-  }
-
-  /* ... kode background sebelumnya ... */
-}
-
-@media (max-width: 991.98px) {
-  .hero-section {
-    background-image: none;
-    background-color: transparent;
-    min-height: auto;
-
-    /* 💡 ATUR WARNA TEKS MENJADI GELAP DI MOBILE */
-    color: #333333; /* Gunakan warna gelap, misalnya abu-abu gelap */
-  }
-
-  /* ... kode-kode untuk gambar dan spacing lainnya ... */
-}
-
-@media (max-width: 991.98px) {
-  /* Aturan umum untuk hero-section */
-  .hero-section {
-    background-image: none;
-    background-color: transparent;
-    color: #333333; /* Warna default gelap untuk child element */
-    min-height: auto;
-  }
-
-  /* ... kode-kode untuk gambar, spacing, dan slogan lainnya ... */
-}
-
-@media (max-width: 991.98px) {
-  /* ... Kode CSS lainnya (gambar, teks center, dll.) ... */
-
-  .btn-primary {
-    order: 1;
-
-    /* 1. Atur Padding (Tinggi dan Lebar) */
-    /* Mengurangi padding agar tombol tidak terlalu besar */
-    padding: 10px 25px; /* Atas/Bawah 10px, Kiri/Kanan 25px */
-
-    /* 2. Atur Ukuran Font */
-    /* Mengurangi ukuran font agar proporsional */
-    font-size: 1rem;
-
-    /* 3. Atur Margin (Jarak) */
-    /* Memberi jarak yang cukup dari elemen di atas dan bawah */
-    margin-top: 15px;
-    margin-bottom: 30px;
-
-    /* 4. Atur Lebar (Opsional: Agar tidak terlalu lebar/pendek) */
-    /* Batasi lebar maksimum tombol agar tidak memakan 100% lebar layar */
-    max-width: 300px;
-    /* Pastikan tombol berada di tengah kontainer */
-    /* margin-left: auto; */
-    /* margin-right: auto; */
-    display: block; /* Penting agar margin auto bisa bekerja */
-  }
-
-  /* Jika Anda menggunakan btn-lg (large button) di HTML, 
-       pastikan Anda menargetkan kelas itu juga jika perlu: */
-  .btn-lg {
-    /* Terapkan penyesuaian di sini juga jika ada konflik */
-    padding: 12px 30px;
-  }
-}
-
-@media (max-width: 991.98px) {
-  .hero-section {
-    background-image: none;
-    background-color: transparent;
-    color: #333333;
-    min-height: auto;
-
-    /* 💡 Hapus padding atas yang besar untuk tampilan mobile */
-    padding-top: 0; /* Atur ke 0 agar gambar langsung di bawah navbar */
-    padding-bottom: 30px; /* Pertahankan padding bawah agar konten tidak terlalu rapat di dasar layar */
-  }
-
-  /* ... kode-kode lainnya ... */
-}
-
-@media (max-width: 991.98px) {
-  /* ... kode hero-section di atas ... */
-
-  .mobile-hero-image-container {
-    display: block;
-    width: 100%;
-
-    /* 💡 Pastikan margin atas 0 */
-    margin-top: 0;
-    margin-bottom: 20px; /* Pertahankan jarak ke teks di bawahnya */
-
-    order: -1;
-    height: 300px;
-    overflow: hidden;
-  }
-
-  /* ... kode-kode lainnya ... */
-}
-
-@media (max-width: 991.98px) {
-  /* ... Kode penyesuaian tombol (padding, margin, width) yang sudah ada ... */
-
-  .btn-primary {
-    /* Set border default agar transisi halus */
-    border: 2px solid transparent;
-    transition: border-color 0.2s ease-in-out; /* Agar perubahan border halus */
-  }
-
-  /* 💡 Efek Hover (mouse) dan Active (sentuhan jari) */
-  .btn-primary:hover,
-  .btn-primary:active {
-    /* Menambahkan border biru saat di-hover atau ditekan */
-    border: 2px solid #007bff; /* Ganti #007bff dengan kode warna biru yang Anda inginkan */
-    /* Pastikan warna teks/background tombol tidak berubah jika tidak diinginkan */
-  }
-
-  /* Jika Anda menggunakan kelas Bootstrap btn-lg */
-  .btn-lg:hover,
-  .btn-lg:active {
-    border: 2px solid #007bff;
-  }
-}
-
-@media (max-width: 991.98px) {
-  .inlet-alignment-container {
-    /* Ini adalah kunci agar konten inline di dalamnya rata tengah */
-    /* text-align: center; */
-  }
-}
-
-@media (max-width: 991.98px) {
-  .inlet-alignment-container {
-    /* Ini adalah kunci agar konten inline di dalamnya rata tengah */
-    text-align: center;
-  }
-}
-
-@media (max-width: 991.98px) {
-  /* ... Kode CSS lainnya ... */
-
-  .btn-primary {
-    order: 1;
-    padding: 10px 25px;
-    font-size: 1rem;
-    margin-top: 15px;
-    margin-bottom: 30px;
-
-    /* 4. Atur Lebar */
-    max-width: 300px;
-
-    /* 💡 Perbaikan: Pastikan properti ini TIDAK dikomentari */
-    margin-left: auto;
-    margin-right: auto;
-
-    display: block; /* Tetap penting */
-  }
-}
-
-/* Gaya untuk Tampilan Desktop / Normal */
-.inlet-alignment-container {
-  /* Menggunakan Flexbox untuk menyusun INLET dan Full Name secara horizontal */
-  display: flex;
-  align-items: center; /* Membuat teks sejajar secara vertikal di tengah */
-  margin-bottom: 10px; /* Jarak ke konten di bawahnya (slogan) */
-}
-
-.inlet-acronym {
-  /* Font style untuk INLET */
-  font-size: 2rem; /* Ukuran besar */
-  font-weight: 700; /* Tebal */
-  /* Memberi sedikit jarak di sebelah kanan sebelum Full Name */
-  margin-right: 10px;
-  /* Warna sesuai tema hero section (misalnya putih) */
-  color: #ffffff;
-}
-
-.inlet-fullname {
-  /* Font style untuk nama lengkap */
-  font-size: 0.9rem; /* Ukuran sedang */
-  font-weight: 300; /* Lebih tipis */
-  opacity: 0.8; /* Sedikit transparan agar tidak terlalu mendominasi */
-  color: #ffffff;
-}
-
-/* Media Query untuk Tampilan Mobile */
-@media (max-width: 991.98px) {
-  .inlet-alignment-container {
-    /* Kembali ke column jika Anda ingin memisahkannya menjadi dua baris di mobile */
-    /* display: flex; 
-        flex-direction: column; */
-
-    /* Jika ingin tetap satu baris, cukup pastikan text-align: center: */
-    display: block;
-    text-align: center;
-    margin-bottom: 15px; /* Jarak lebih kecil di mobile */
-  }
-
-  .inlet-acronym {
-    /* Mengubah warna font dan ukuran di mobile */
-    font-size: 1.5rem;
-    color: #000000 !important; /* Hitam, karena background putih */
-    margin-right: 5px; /* Kurangi jarak kanan */
-    display: block; /* Agar bisa diatur jarak antar kata jika di satu baris */
-  }
-
-  .inlet-fullname {
-    font-size: 0.9rem;
-    color: #333333 !important; /* Abu-abu gelap */
-    display: inline-block;
-  }
-
-  .hero-slogan {
-    text-align: center;
-  }
-
-  .inlet-alignment-container {
-    justify-content: center; /* Meratakan keseluruhan blok di tengah halaman */
-  }
-}
-
-.inlet-alignment-container {
-  justify-content: flex-start; /* Meratakan keseluruhan blok di tengah halaman */
-}
+/* ================================================= */
+/* 4. INLET TITLE                                   */
+/* ================================================= */
 
 .inlet-alignment-container {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-
-  /* 💡 TAMBAHKAN MARGIN ATAS INI */
-  margin-top: 50px; /* Sesuaikan nilai (misalnya 50px) sesuai jarak yang Anda inginkan */
+  margin-top: 50px;
+  margin-bottom: 15px;
 }
 
-/* Pastikan di mobile, margin ini di-reset atau diatur ulang */
+.inlet-acronym {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-right: 10px;
+  color: #ffffff;
+}
+
+.inlet-fullname {
+  font-size: 0.9rem;
+  font-weight: 300;
+  opacity: 0.8;
+  color: #ffffff;
+}
+
+/* ================================================= */
+/* 5. MOBILE HERO IMAGE                              */
+/* ================================================= */
+
+.mobile-hero-image-container {
+  display: none;
+}
+
+/* ================================================= */
+/* 6. MEDIA QUERIES (RESPONSIVE)                    */
+/* ================================================= */
+
 @media (max-width: 991.98px) {
+  /* HERO SECTION */
+  .hero-section {
+    background-image: none;
+    background-color: transparent;
+    color: #333;
+    min-height: auto;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* MOBILE IMAGE */
+  .mobile-hero-image-container {
+    display: block;
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+    order: -1;
+    overflow: hidden;
+  }
+
+  .mobile-hero-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  /* INLET TEXT */
   .inlet-alignment-container {
-    /* Set ulang margin-top untuk mobile agar tidak terlalu jauh dari gambar */
-    margin-top: 0;
-    /* ... kode mobile lainnya ... */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    margin-bottom: 0; /* Jarak ke konten di bawahnya (slogan) */
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+
+  .inlet-acronym {
+    font-size: 1.8rem;
+    margin-right: 0;
+    margin-bottom: 5px;
+    color: #1a237e !important;
+  }
+
+  .inlet-fullname {
+    font-size: 1rem;
+    color: #1a237e !important;
+    display: block;
+  }
+
+  /* HERO SLOGAN */
+  .hero-slogan {
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 15px;
+    padding: 0 15px;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  /* BUTTON */
+  .btn-primary {
+    order: 1;
+    padding: 10px 25px;
+    font-size: 1rem;
+    max-width: 300px;
+    margin: 0 auto 30px auto;
+    display: block;
+    border: 2px solid #007bff;
+    background-color: #007bff;
+    color: #fff !important;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover,
+  .btn-primary:active {
+    background-color: #fff;
+    color: #007bff !important;
+    border-color: #007bff;
+  }
+
+  /* HERO CONTAINER PERGESERAN KE KANAN HILANG DI MOBILE */
+  .hero-section .container {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    text-align: center !important;
   }
 }
 
+/* ================================================= */
+/* 7. DESKTOP HERO CONTAINER SHIFT                  */
+/* ================================================= */
+
+@media (min-width: 992px) {
+  .hero-section .container {
+    width: 50%;
+    max-width: 500px;
+    margin-left: 150px;
+    text-align: left;
+  }
+
+  .hero-section {
+    justify-content: unset !important;
+    text-align: unset !important;
+  }
+}
+
+/* =============================== */
+/* Hero Section Animasi & Mobile    */
+/* =============================== */
+
+/* Animasi Masuk */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-section .hero-content > * {
+  animation: fadeUp 0.8s ease forwards;
+  opacity: 0; /* Start dari transparan */
+}
+
+/* Delay berbeda untuk tiap elemen agar stagger effect */
+.inlet-alignment-container {
+  animation-delay: 0.2s;
+}
+
+.hero-slogan {
+  animation-delay: 0.4s;
+}
+
+.btn-primary {
+  animation-delay: 0.6s;
+}
+
+/* =============================== */
+/* Mobile Fix Warna Teks           */
+/* =============================== */
 @media (max-width: 991.98px) {
+  .hero-section {
+    background-image: none;
+    background-color: #ffffff; /* Background putih */
+    color: #1a237e; /* Semua teks default biru InLet */
+    min-height: auto;
+    padding-top: 20px;
+    padding-bottom: 30px;
+  }
+
+  .inlet-acronym,
+  .inlet-fullname,
+  .hero-slogan {
+    color: #1a237e !important; /* Biru InLet */
+  }
+
+  .btn-primary {
+    background-color: #1a237e; /* Biru InLet */
+    color: #ffffff !important; /* Teks putih */
+    border-color: #1a237e;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover,
+  .btn-primary:active {
+    background-color: #ffffff;
+    color: #1a237e !important;
+    border-color: #1a237e;
+  }
+
+  /* Mobile Hero Image */
+  .mobile-hero-image-container {
+    display: block;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    order: -1;
+    margin-bottom: 20px;
+  }
+
+  .mobile-hero-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* Rata tengah */
   .inlet-alignment-container {
-    /* Kunci 1: Gunakan Flexbox */
     display: flex;
-
-    /* Kunci 2: Tumpuk elemen secara vertikal (atas-bawah) */
     flex-direction: column;
-
-    /* Kunci 3: Pastikan tumpukan berada di tengah secara horizontal */
     align-items: center;
-
-    /* Reset text-align yang mungkin mengganggu Flexbox */
     text-align: center;
     margin-bottom: 15px;
   }
 
   .inlet-acronym {
-    /* Pastikan elemen ini adalah blok/inline-block agar flex-direction bekerja optimal */
-    display: block;
     font-size: 1.8rem;
-    color: #1a237e !important;
-    margin-right: 0; /* Hapus margin kanan agar tidak ada space kosong */
-    margin-bottom: 5px; /* Beri jarak sedikit di bawah akronim */
+    font-weight: 700;
+    margin-right: 0;
+    margin-bottom: 5px;
   }
 
   .inlet-fullname {
-    /* Pastikan elemen ini adalah blok/inline-block */
-    display: block;
     font-size: 1rem;
-    color: 1a237e !important;
+    font-weight: 400;
   }
-}
 
-@media (max-width: 991.98px) {
-  /* ... kode penyesuaian tombol (padding, margin, width) yang sudah ada ... */
+  .hero-slogan {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
 
   .btn-primary {
     order: 1;
-
-    /* 1. STATE DEFAULT (Tidak di-hover/active) */
-    /* Warna Button Biru, Teks Putih */
-    background-color: #007bff; /* Biru */
-    color: #ffffff !important; /* Putih, gunakan !important jika warna teks sebelumnya konflik */
-    border: 2px solid #007bff; /* Border default biru (sama dengan background) */
-
-    transition: all 0.2s ease-in-out;
-
-    /* ... properti lain seperti padding, max-width, margin-auto ... */
     padding: 10px 25px;
     font-size: 1rem;
     max-width: 300px;
@@ -629,13 +374,22 @@ h5 {
     margin-right: auto;
     display: block;
   }
-
-  /* 2. STATE HOVER / ACTIVE */
-  .btn-primary:hover,
-  .btn-primary:active {
-    /* Background Putih, Border Biru, Teks Biru */
-    background-color: #ffffff;
-    color: #007bff !important; /* Teks harus biru agar terlihat di atas background putih */
-    border: 2px solid #007bff; /* Border biru */
-  }
 }
+
+/* CTA BUTTON */
+.btn-primary {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: #fff;
+  border: none;
+}
+
+/* hover */
+.btn-primary:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+  color: #fff;
+}
+
+/* .hero-section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../images/gallery/2.jpg");
+} */

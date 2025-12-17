@@ -16,16 +16,16 @@
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/quick-stat.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/about-us.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/research-snippet.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/riset_list.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/riset_detail.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/profil.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/tim.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/fasilitas.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/kegiatan.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/detail_kegiatan.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/galeri.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/kontak.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/buku_tamu.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/peminjaman.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/research.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/detail_research.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/profile.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/members.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/facilty.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/activitites.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/detail_activities.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/gallery.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/contact.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/guestbook.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/loan.css">
     
 </head>

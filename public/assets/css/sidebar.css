@@ -93,7 +93,7 @@ body {
 
 /* --- 2. MAIN SIDEBAR --- */
 .sidebar {
-  width: 200px;
+  width: 250px;
   background-color: #ffffff;
   color: var(--color-text-dark);
   box-shadow: 1px 0 5px rgba(0, 0, 0, 0.05);
@@ -422,4 +422,416 @@ body {
   }
 
   /* ... kode lain ... */
+}
+
+/* ==========================================================
+   REVISI UMUM (Mengurangi Ukuran Font Global)
+   ========================================================== */
+
+/* Mengurangi ukuran font dasar pada elemen-elemen sidebar */
+.sidebar {
+  font-size: 13px; /* Default lebih kecil dari 16px */
+  color: #4b5563; /* Warna teks yang lebih lembut */
+}
+
+/* ==========================================================
+   REVISI MINI-TOOLBAR
+   ========================================================== */
+
+.mini-toolbar {
+  /* Menghapus atau mengurangi font-size jika ada definisi yang spesifik */
+  font-size: 1rem; /* Biarkan default browser, atau set ke 16px */
+}
+
+.mini-toolbar .toolbar-item {
+  /* Memastikan ikon tidak terlalu besar */
+  font-size: 13px;
+  color: #374151;
+}
+
+/* ==========================================================
+   REVISI SIDEBAR (Menu Navigasi Utama)
+   ========================================================== */
+
+/* 1. Kontrol Ketebalan (Menghapus BOLD pada Teks Menu) */
+.sidebar .main-menu a {
+  font-weight: 500; /* Medium, lebih tipis dari bold (700) */
+  /* Jika masih terlihat bold, coba set ke 400 (normal) */
+  /* font-weight: 400; */
+}
+
+/* 2. Kontrol Ukuran Font pada Item Menu */
+.sidebar .main-menu li a {
+  font-size: 13px; /* Sedikit lebih kecil dari default */
+  padding: 10px 15px; /* Jaga jarak antar item */
+}
+
+/* 3. Kontrol Teks Aktif (Agar tidak terlalu Bold) */
+.sidebar .main-menu li.active > a {
+  font-weight: 600; /* Sedikit lebih tebal dari normal, tapi tidak se-bold 700 */
+  /* Menjaga visual active state tanpa terlalu Bold */
+}
+
+/* 4. Kontrol Ukuran Font Submenu */
+.sidebar .main-menu .submenu li a {
+  font-size: 13px; /* Submenu biasanya lebih kecil dari menu utama */
+  padding-left: 45px; /* Sesuaikan indentasi */
+}
+
+/* 5. Kontrol Header Sidebar (Logo/Nama Aplikasi) */
+.sidebar .sidebar-header {
+  /* Jika teks di header terlalu besar, sesuaikan di sini */
+  padding: 20px 15px;
+}
+
+/* ========================================================== */
+/* A. GLOBAL & FONT (Menggunakan Poppins) */
+/* ========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --color-sidebar: #1e307e;
+  --color-primary: #1e307e;
+  --color-light-bg: #f5f5f5; /* Sedikit lebih terang dari ebe7e7 */
+  --color-text-dark: #333;
+  --color-text-grey: #666;
+  --color-text-soft: #4b5563;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+body {
+  font-family: "Poppins", sans-serif; /* Poppins Diterapkan */
+  background-color: var(--color-light-bg);
+  font-size: 14px; /* Default font dasar lebih kecil */
+  color: var(--color-text-dark);
+}
+
+/* ========================================================== */
+/* B. LAYOUT UTAMA & SIDEBAR BASE */
+/* ========================================================== */
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #ffffff;
+  box-shadow: 1px 0 5px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+  padding: 20px 0;
+  font-size: 13px; /* Ukuran menu navigasi */
+  color: var(--color-text-soft);
+}
+
+.sidebar-header {
+  padding: 0 15px 20px 15px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 5px;
+}
+
+/* ========================================================== */
+/* C. KOREKSI MENU UTAMA (Tombol & Expand) */
+/* ========================================================== */
+
+.sidebar .main-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* KOREKSI KRITIS: Menjamin Lebar Sama & Space Between */
+.sidebar .main-menu > li > a {
+  display: flex;
+  /* Ini penting: Memastikan ikon expand (panah) rata kanan */
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 15px; /* PADDING UTAMA */
+  color: var(--color-sidebar);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* Wrapper untuk Ikon dan Teks di Kiri */
+.sidebar .menu-item-content {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Jarak Ikon ke Teks */
+}
+.sidebar .main-menu > li > a .material-icons-outlined {
+  font-size: 18px; /* Ukuran Ikon */
+  color: var(--color-sidebar);
+  margin-right: 0; /* Dikelola oleh gap */
+}
+
+/* Status Aktif / Hover / Expanded */
+.sidebar .main-menu > li.active > a,
+.sidebar .main-menu > li > a:hover {
+  background-color: var(--color-light-bg);
+  color: var(--color-primary);
+  font-weight: 600; /* Tidak se-bold 700 */
+}
+.sidebar .main-menu > li.expanded > a {
+  background-color: #f0f0f0;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+/* Warna Ikon pada Status Aktif */
+.sidebar .main-menu > li.active > a .material-icons-outlined,
+.sidebar .main-menu > li.expanded > a .material-icons-outlined {
+  color: var(--color-primary);
+}
+
+/* Ikon Panah (Expand Icon) */
+.sidebar .expand-icon {
+  transition: transform 0.3s;
+  font-size: 16px;
+  color: var(--color-text-grey);
+}
+.sidebar .expanded .expand-icon {
+  transform: rotate(180deg);
+}
+
+/* ========================================================== */
+/* D. SUBMENU STYLES */
+/* ========================================================== */
+
+.sidebar .submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  background-color: #f7f7f7;
+}
+
+.sidebar .expanded .submenu {
+  max-height: 500px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.sidebar .submenu li a {
+  /* PADDING KIRI: 15px (Padding utama) + 15px (Indentasi) = 30px */
+  padding: 8px 15px 8px 30px;
+  font-size: 13px;
+  color: var(--color-text-dark);
+  text-decoration: none;
+  display: block; /* Cukup block karena tidak ada ikon panah di submenu */
+  transition: background-color 0.2s;
+}
+
+.sidebar .submenu li a:hover {
+  background-color: #eeeeee;
+  color: var(--color-primary);
+}
+
+.sidebar .submenu li.active a {
+  color: var(--color-primary);
+  font-weight: 600;
+  background-color: var(--color-light-bg);
+  border-radius: 4px;
+  margin: 0 10px;
+  /* PADDING AKTIF: Disesuaikan karena ada margin 10px */
+  padding: 8px 15px 8px 20px;
+}
+
+/* ========================================================== */
+/* C. KOREKSI MENU UTAMA (Tombol & Expand) */
+/* ========================================================== */
+
+/* KOREKSI KRITIS: Menjamin Lebar Sama & Space Between pada Link A */
+.sidebar .main-menu > li > a {
+  display: flex;
+  justify-content: space-between; /* PENTING: Konten Kiri vs Ikon Kanan */
+  align-items: center;
+
+  padding: 10px 15px; /* PADDING UTAMA */
+  color: var(--color-sidebar);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* WRAPPER KONTEN KIRI (Ikon + Teks) */
+.sidebar .menu-item-content {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Jarak antara Ikon dan Teks (sesuai permintaan) */
+}
+
+/* Penyesuaian Ikon */
+.sidebar .main-menu > li > a .material-icons-outlined {
+  font-size: 18px;
+  color: var(--color-sidebar);
+  /* Tidak perlu margin-right, karena sudah dikelola oleh gap pada .menu-item-content */
+}
+
+/* Status Aktif / Hover / Expanded (tetap sama) */
+.sidebar .main-menu > li.active > a,
+.sidebar .main-menu > li > a:hover {
+  background-color: var(--color-light-bg);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+/* Warna Ikon pada Status Aktif */
+.sidebar .main-menu > li.active > a .material-icons-outlined,
+.sidebar .main-menu > li.expanded > a .material-icons-outlined {
+  color: var(--color-primary);
+}
+
+/* Ikon Panah (Expand Icon) */
+.sidebar .expand-icon {
+  transition: transform 0.3s;
+  font-size: 16px;
+  color: var(--color-text-grey);
+  flex-shrink: 0; /* Pastikan ikon tidak menciut */
+}
+/* ... (CSS submenu dan lainnya) ... */
+
+/* ========================================================== */
+/* D. SUBMENU STYLES - KOREKSI FINAL ICON & TEXT */
+/* ========================================================== */
+
+/* Styling Link Submenu */
+.sidebar .submenu li a {
+  /* PADDING KIRI: 15px (Padding utama) + 15px (Indentasi) = 30px */
+  padding: 8px 15px 8px 30px;
+  font-size: 13px;
+  color: var(--color-text-dark);
+  text-decoration: none;
+
+  /* PENTING: Mengaktifkan flex untuk align-items: center dan gap */
+  display: flex;
+  align-items: center; /* Sejajarkan ikon dan teks di tengah vertikal */
+
+  transition: background-color 0.2s;
+}
+
+/* Menggunakan WRAPPER yang sama untuk Ikon + Teks di submenu */
+/* Note: Class .menu-item-content sudah memiliki display: flex dan gap: 10px */
+.sidebar .submenu li a .menu-item-content {
+  /* Pastikan menu-item-content memenuhi sisa ruang */
+  width: 100%;
+}
+
+/* Styling Item Submenu yang Sedang Aktif */
+.sidebar .submenu li.active a {
+  color: var(--color-primary);
+  font-weight: 600;
+  background-color: var(--color-light-bg);
+  border-radius: 4px;
+  margin: 0 10px;
+  /* PADDING AKTIF: Disesuaikan karena ada margin 10px */
+  padding: 8px 15px 8px 20px;
+}
+
+/* MINI TOOLBAR */
+.mini-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 60px; /* setelah mini-toolbar */
+  width: 250px;
+  height: 100vh;
+  background-color: #fff; /* biarkan sesuai theme lama */
+  overflow-y: auto;
+  max-height: 100vh; /* menu scrollable */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.main-content-wrapper {
+  margin-left: 310px; /* sidebar + toolbar */
+  padding: 20px;
+}
+
+.sidebar-toggle-btn {
+  display: none;
+}
+
+@media (min-width: 992px) {
+}
+@media (max-width: 991px) {
+  .sidebar {
+    left: -260px; /* sembunyikan default */
+    transition: left 0.3s;
+  }
+  .sidebar.show {
+    left: 0;
+  }
+  .main-content-wrapper {
+    margin-left: 60px; /* full width di mobile */
+  }
+}
+
+.sidebar-user-info {
+  text-align: left;
+  padding: 10px 15px;
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--color-primary); /* tetap sesuai style default sidebar */
+}
+.sidebar-user-info .user-name {
+  font-weight: bold;
+  display: block;
+}
+.sidebar-user-info .user-role {
+  font-style: italic;
+  opacity: 0.8;
+  display: block;
+}
+
+/* ===============================
+   MINI TOOLBAR CONTAINER
+================================ */
+.mini-toolbar {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+}
+
+/* ===============================
+   INNER WRAPPER
+================================ */
+.mini-toolbar-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===============================
+   LOGOUT AREA SPACING
+================================ */
+.logout-left {
+  margin: 0;
+}
+
+/* ===============================
+   ICON INSIDE (optional polish)
+================================ */
+.mini-toolbar .material-icons-outlined {
+  font-size: 22px;
+  color: #ffffff;
 }

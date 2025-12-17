@@ -1,0 +1,350 @@
+/* --- Styling Halaman Kontak --- */
+.kontak-content-container {
+  padding: 3rem 0 6rem 0;
+}
+
+/* 1. Layout Grid 2 Kolom Desktop */
+.kontak-grid {
+  padding: 0 3rem;
+  display: flex;
+  flex-direction: column; /* Mobile Stack */
+  gap: 40px;
+}
+
+@media (min-width: 992px) {
+  .kontak-grid {
+    flex-direction: row; /* Desktop: 2 Kolom */
+    justify-content: space-between;
+  }
+  .kontak-info,
+  .kontak-form {
+    flex: 1; /* Ambil porsi yang sama */
+  }
+}
+
+/* 2. Styling Info Statis */
+.kontak-info h2,
+.kontak-form h2 {
+  color: #2247ab;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.contact-item i {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-right: 0.8rem;
+  margin-top: 0.2rem;
+}
+
+/* Styling Peta */
+.map-placeholder iframe {
+  width: 100%;
+  height: 250px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+}
+
+/* 3. Styling Formulir Kontak */
+.form-group {
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+.contact-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #444;
+}
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #2247ab; /* Highlight biru saat fokus */
+  outline: none;
+}
+.contact-form textarea {
+  resize: vertical; /* Izinkan resize vertikal */
+}
+
+.contact-form button[type="submit"] {
+  /* Menggunakan styling .btn-primary yang sudah ada */
+  width: auto;
+  margin-top: 0.5rem;
+  padding: 0.8rem 2rem;
+}
+
+/* --- Styling Halaman Kontak (Tambahan) --- */
+
+/* Styling Peta Container */
+.map-placeholder {
+  margin-top: 2rem; /* Beri jarak dari detail kontak di atas */
+}
+.map-placeholder h3 {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin-bottom: 0.8rem;
+}
+
+.map-placeholder iframe {
+  width: 100%; /* WAJIB: Agar responsif dan mengambil lebar penuh container */
+  height: 250px; /* Tinggi vertikal yang nyaman */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* Styling Detail Kontak */
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.contact-item i {
+  color: #2247ab; /* Warna Biru INLET untuk ikon */
+  margin-right: 0.8rem;
+  margin-top: 0.2rem;
+}
+
+/* --- Styling Halaman Kontak (Mobile-First) --- */
+.kontak-grid {
+  padding: 0 3rem;
+  display: flex;
+  flex-direction: column; /* MOBILE: Peta di atas, Formulir di bawah */
+  gap: 40px; /* Jarak antara Peta dan Formulir di mobile */
+}
+
+/* Styling Card Putih (Sudah ada di .kontak-info, .kontak-form) */
+.kontak-info,
+.kontak-form {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  /* ... */
+}
+
+@media (min-width: 992px) {
+  .kontak-grid {
+    /* DESKTOP: Beralih ke Flexbox Horizontal */
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 30px; /* Jarak antara 2 kolom */
+  }
+
+  .kontak-info {
+    /* Kolom Kiri: Peta dan Info Statis */
+    flex: 1; /* Mengambil porsi yang sama */
+  }
+  .kontak-form {
+    /* Kolom Kanan: Formulir */
+    flex: 1;
+  }
+}
+
+/* --- Styling Form Container (Berlaku untuk .kontak-form dan Buku Tamu) --- */
+
+.kontak-form {
+  /* 1. Background Putih */
+  background-color: white;
+
+  /* 2. Padding Internal */
+  padding: 2rem;
+
+  /* 3. Border Radius */
+  border-radius: 12px;
+
+  /* 4. Shadow di Sekelilingnya */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Shadow halus */
+
+  /* Tambahan: Pastikan form tetap di tengah halaman */
+  margin: 0 auto;
+}
+
+/* --- Styling Input Fields (Keterbacaan) --- */
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #2247ab; /* Highlight biru saat fokus */
+  outline: none;
+}
+
+/* Styling Kontak Info */
+.kontak-info {
+  /* Hapus background-color: white, padding, border-radius, box-shadow dari sini */
+  /* Kembalikan padding internal agar sama dengan form: */
+  padding: 2rem;
+
+  /* Tambahan: Pastikan tidak ada background/shadow yang mengganggu */
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* Styling Formulir Kontak (Hanya untuk Kolom Kanan) */
+.kontak-form {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+
+  /* KUNCI: Shadow Lebih Kuat dan Menonjol */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  /* Tambahan: Pastikan margin auto di mobile agar center */
+  margin: 0 auto;
+}
+
+/* --- Styling Halaman Kontak (Mobile-First) --- */
+
+.kontak-content-container {
+  padding: 0 0 6rem 0;
+}
+
+/* KOREKSI: Tambahkan padding horizontal yang nyaman untuk mobile */
+.kontak-grid {
+  /* Padding horizontal di mobile agar tidak mepet */
+  padding: 0 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Styling Card Putih (Hanya Kontak Form) */
+.kontak-form {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  /* WAJIB: Pastikan margin auto dihilangkan di mobile jika perlu */
+  margin: 0;
+}
+
+/* KOREKSI: Batasi lebar di DESKTOP (sudah ada di media query) */
+@media (min-width: 992px) {
+  .kontak-grid {
+    /* Hapus padding horizontal di desktop karena sudah diatur oleh content-wrapper */
+    padding: 0;
+    flex-direction: row;
+  }
+
+  .kontak-form,
+  .kontak-info {
+    /* Di desktop, biarkan padding 0 untuk memanfaatkan lebar container */
+    padding: 0;
+  }
+
+  /* Tambahkan kembali padding internal di dalam card untuk desktop */
+  .kontak-form {
+    padding: 2rem;
+  }
+  .kontak-info {
+    padding: 2rem;
+  }
+}
+
+/* Styling Page Header */
+.page-header {
+  /* Hapus padding horizontal dari sini */
+  padding: 2rem 0 0.8rem 0; /* Vertikal padding */
+  /* ... */
+}
+
+/* Kunci: Membuat Content Wrapper (Di sini padding horizontal utama diatur) */
+.page-header .content-wrapper {
+  max-width: 1200px; /* Batas lebar konten */
+  margin: 0 auto;
+  /* KOREKSI: Tambahkan padding horizontal 1.5rem di sini */
+  padding: 0 1.5rem;
+  text-align: left;
+}
+
+/* Styling Kontak Grid (Mobile-First) */
+.kontak-grid {
+  /* Hapus padding 0 3rem; jika ada, dan ganti dengan 1.5rem untuk konsistensi */
+  padding: 0 1.5rem;
+  /* ... styling lainnya ... */
+}
+
+/* KOREKSI: Sesuaikan padding-top body jika diperlukan */
+body {
+  /* ... */
+  padding-top: 4.5rem; /* Pastikan padding body cukup */
+}
+
+/* Tambahkan input select di grup styling input umum */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"], /* Tambahkan input tel */
+.contact-form select, /* BARU: Styling untuk select dropdown */
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  /* Tambahan penting: hapus tampilan default browser */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: white; /* Pastikan background putih */
+}
+
+/* Styling fokus untuk elemen input dan select */
+.contact-form input:focus,
+.contact-form select:focus, /* BARU: Styling fokus untuk select */
+.contact-form textarea:focus {
+  border-color: #2247ab; /* Highlight biru saat fokus */
+  outline: none;
+}
+
+/* -------------------------------------- */
+/* Styling Pesan Feedback (Alerts) */
+/* -------------------------------------- */
+
+.alert {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  border: 1px solid transparent;
+}
+
+.alert-danger {
+  color: #842029; /* Teks Merah Gelap */
+  background-color: #f8d7da; /* Background Merah Muda */
+  border-color: #f5c2c7; /* Border Merah Muda */
+}
+
+.alert-success {
+  color: #0f5132; /* Teks Hijau Gelap */
+  background-color: #d1e7dd; /* Background Hijau Muda */
+  border-color: #badbcc; /* Border Hijau Muda */
+}

@@ -3,7 +3,7 @@
 
 // WAJIB: Define Project Root Global dan load .env
 define('ROOT_PATH', dirname(__DIR__) . '/'); 
-define('BASE_URL', 'http://inlet-project.test/'); // Sesuaikan
+define('BASE_URL', 'https://inlet-project.test/'); // Sesuaikan
 require_once ROOT_PATH . 'app/core/Env.php';
 loadEnv(ROOT_PATH . '.env'); 
 

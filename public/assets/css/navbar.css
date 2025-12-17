@@ -1,176 +1,314 @@
 /* ================================================= */
-/* === 3. MOBILE MENU TOGGLE LOGIC (SLIDE ANIMATION) === */
+/* 0. FONT GLOBAL & RESET                           */
 /* ================================================= */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif; /* Font modern, bersih */
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333333;
+  background-color: #ffffff;
+}
+
+/* Link */
+a {
+  color: #1a237e; /* Biru InLet */
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+a:hover {
+  color: #0d1a70; /* Shade lebih gelap saat hover */
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  color: #1a237e;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2.5rem;
+}
+h3 {
+  font-size: 2rem;
+}
+h4 {
+  font-size: 1.5rem;
+}
+h5 {
+  font-size: 1.2rem;
+}
+
+/* ================================================= */
+/* 1. NAVBAR & MOBILE MENU                           */
+/* ================================================= */
+.navbar {
+  font-family: "Inter", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6rem;
+  transition: padding 0.3s ease;
+  z-index: 1000;
+}
+
+.navbar.scrolled {
+  padding: 0 6rem;
+}
+
+.navbar-brand .logo-img {
+  max-height: 40px;
+  height: auto;
+  display: block;
+}
+
+/* Mobile Hamburger */
 @media (max-width: 768px) {
-  /* Pastikan hamburger terlihat di mobile */
   .hamburger-toggle {
     display: block;
-    z-index: 1002; /* PENTING: Lebih tinggi dari Z-Index overlay (999) */
-  }
-
-  /* Overlay menu mobile */
-  .navbar-links.active {
-    /* ... (Gaya positioning fixed, max-height, background tetap) ... */
-    z-index: 999;
-  }
-
-  /* Styling Item List Mobile (LI & Dropdown) */
-  .navbar-links li {
-    text-align: center;
-    padding: 0.75rem 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  /* Perbaikan Dropdown Summary di Mobile */
-  .dropdown summary {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-  }
-
-  /* Kunci: Pastikan Dropdown Menu mengikuti alur vertikal di dalam overlay */
-  .dropdown-menu {
-    position: relative !important; /* WAJIB: Agar di dalam flow */
-    background-color: #1a3c8e !important;
-    box-shadow: none !important;
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-  }
-
-  /* Tampilkan Submenu saat details terbuka */
-  .dropdown[open] .dropdown-menu {
-    max-height: 500px; /* Nilai besar agar konten sub-menu terlihat */
-  }
-
-  .dropdown-menu li {
-    text-align: left; /* Rata kiri untuk item sub-menu */
-    padding: 0.5rem 1rem 0.5rem 2.5rem; /* Beri indentasi agar terlihat jelas */
-    border-top: none;
-  }
-
-  .dropdown-menu li a {
-    font-size: 0.9rem;
-  }
-
-  /* Pastikan tombol hamburger bersih dari gaya default browser */
-  .hamburger-toggle {
-    display: block;
-    background: none; /* Hapus latar belakang */
-    border: none; /* Hapus semua border */
-    outline: none; /* Hapus outline saat fokus (penting untuk styling) */
-    cursor: pointer;
-    padding: 0; /* Hapus padding default */
     z-index: 1002;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
   }
 
-  /* Pastikan ikon (i) di dalamnya juga bersih */
   .hamburger-toggle i {
-    font-size: 24px; /* Atur ukuran ikon yang stylish */
-    line-height: 1; /* Penting untuk perataan vertikal */
-    color: black; /* Warna default */
+    font-size: 24px;
+    line-height: 1;
+    color: #1a237e;
     transition: transform 0.3s ease, color 0.3s ease;
   }
 
-  /* CSS untuk Ikon Rotasi (diaktifkan oleh JS) */
   .hamburger-toggle i.rotated {
-    /* Putar 90 derajat atau 180 derajat untuk efek "close" */
     transform: rotate(90deg);
   }
-}
 
-.navbar-links.active {
-  /* ... (Gaya positioning fixed dan z-index tetap) ... */
-
-  height: 100vh;
-  padding-top: 4rem; /* Jarak dari atas (di bawah navbar utama) */
-
-  /* Kunci: Memungkinkan scroll hanya di dalam overlay */
-  overflow-y: auto;
-
-  /* Pastikan Body tidak bisa di-scroll saat menu aktif (Opsional, memerlukan JS) */
-}
-
-@media (max-width: 768px) {
-  /* Pastikan setiap item menu utama (LI) memiliki padding horizontal yang cukup */
-  .navbar-links li {
-    padding: 0.75rem 20px; /* Tambahkan padding horizontal (20px) */
-  }
-
-  /* Styling Sub-Menu (di dalam .dropdown-menu) */
-  .dropdown-menu li {
-    text-align: center;
-    /* Beri indentasi agar sub-menu terlihat masuk ke dalam */
-    padding: 0.5rem 20px 0.5rem 40px;
-    border-top: none;
-  }
-
-  .dropdown-menu li a {
-    display: flex; /* Untuk perataan ikon dan teks */
-    align-items: center;
-    white-space: normal; /* Biarkan teks bisa pecah baris jika terlalu panjang */
-  }
-
-  .dropdown-menu li a i {
-    margin-right: 10px; /* Jarak antara ikon dan teks sub-menu */
-  }
-}
-
-@media (max-width: 768px) {
-  /* 1. KONTROL ITEM MENU UTAMA (LI) */
-  .navbar-links li {
-    /* Penting: Pastikan item LI mengambil lebar penuh */
+  .navbar-links {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    /* Kita telah mengatur text-align: center di mobile untuk menu utama */
+    max-height: 0;
+    overflow: hidden;
+    background-color: #1a3c8e;
+    transition: max-height 0.3s ease-out;
+    z-index: 999;
   }
 
-  /* 2. KONTROL SUB-MENU (UL) */
+  .navbar-links.active {
+    max-height: 100vh;
+    padding-top: 4rem;
+    overflow-y: auto;
+  }
+
+  .navbar-links li {
+    text-align: center;
+    padding: 0.75rem 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+  }
+
   .dropdown-menu {
-    /* Pastikan sub-menu mengambil lebar 100% dari parent (LI) */
-    width: 100%;
     position: relative !important;
-    /* KUNCI: Rata tengah semua teks di dalam UL */
+    width: 100%;
     text-align: center;
-    /* Hilangkan padding/margin yang mengganggu alignment */
-    padding: 0;
-    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #1a3c8e !important;
+    box-shadow: none !important;
   }
 
-  /* 3. KONTROL TAUTAN SUB-MENU (A) */
+  .dropdown[open] .dropdown-menu {
+    max-height: 500px;
+  }
+
   .dropdown-menu li a {
-    /* Teks item sub-menu rata tengah */
-    text-align: center;
-
-    /* Ubah menjadi block agar dapat mengambil lebar penuh LI */
     display: block;
-
-    /* Hapus properti display:flex yang mungkin mengganggu centering */
-    /* Jika ikon ada, kita harus memposisikannya secara berbeda */
-
-    /* Jarak/Padding internal link */
+    text-align: center;
     padding: 8px 15px;
+    color: #ffffff;
+    font-weight: 500;
+    transition: background 0.3s ease;
   }
 
-  /* 4. Penyesuaian Ikon (Jika Teks Rata Tengah) */
-  /* Jika Anda ingin ikon tetap muncul, Anda mungkin perlu mengubahnya menjadi elemen
-       inline atau mengatur posisinya agar tetap terlihat rapi saat teks rata tengah. */
+  .dropdown-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
   .dropdown-menu li a i {
-    /* Pastikan ikon berada di samping teks saat rata tengah */
     display: inline-block;
-    margin-right: 5px; /* Jarak antara ikon dan teks */
+    margin-right: 5px;
     vertical-align: middle;
   }
 }
 
-.navbar {
-  /* Padding Vertikal (0.3rem) konsisten, Padding Horizontal Besar (9rem) */
-  padding: 0.3rem 9rem;
+/* ================================================= */
+/* 2. HERO SECTION                                  */
+/* ================================================= */
+.hero-section {
+  min-height: 90vh;
+  position: relative;
+  padding: 5rem 2rem;
+  overflow: hidden;
+  background-image: linear-gradient(
+      rgba(26, 35, 126, 0.7),
+      rgba(26, 35, 126, 0.7)
+    ),
+    url("../images/gallery/12.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
 }
 
-.navbar.scrolled {
-  /* Padding Vertikal (0.3rem) harus sama */
-  padding: 0.3rem 5rem; /* Padding Horizontal bisa berbeda, tetapi Vertikal harus sama */
+/* Hero Animasi */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-section .hero-content > * {
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.inlet-alignment-container {
+  animation-delay: 0.2s;
+}
+.hero-slogan {
+  animation-delay: 0.4s;
+}
+.btn-primary {
+  animation-delay: 0.6s;
+}
+
+/* Hero Mobile */
+@media (max-width: 991.98px) {
+  .hero-section {
+    background-image: none;
+    background-color: #ffffff;
+    color: #1a237e;
+    padding-top: 20px;
+    padding-bottom: 30px;
+  }
+
+  .mobile-hero-image-container {
+    display: block;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    order: -1;
+    margin-bottom: 20px;
+  }
+
+  .mobile-hero-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .inlet-alignment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .inlet-acronym {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #1a237e !important;
+  }
+
+  .inlet-fullname {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #1a237e !important;
+  }
+
+  .hero-slogan {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #1a237e !important;
+  }
+
+  .btn-primary {
+    order: 1;
+    padding: 10px 25px;
+    font-size: 1rem;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    background-color: #1a237e;
+    color: #ffffff !important;
+    border-color: #1a237e;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover,
+  .btn-primary:active {
+    background-color: #ffffff;
+    color: #1a237e !important;
+    border-color: #1a237e;
+  }
+}
+
+/* Navbar Font */
+.navbar {
+  font-family: "Inter", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6rem;
+  font-size: 0.9rem; /* sebelumnya 1rem, dikurangi menjadi 0.9rem */
+  font-weight: 500; /* lebih ringan */
+  transition: padding 0.3s ease;
+  z-index: 1000;
+}
+
+.navbar-links li a {
+  font-size: 0.9rem; /* ukuran link navbar */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .navbar-links li a {
+    font-size: 0.95rem; /* sedikit lebih besar di mobile untuk keterbacaan */
+  }
+
+  .hamburger-toggle i {
+    font-size: 22px; /* lebih kecil agar proporsional */
+  }
 }

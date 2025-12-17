@@ -1,0 +1,351 @@
+/* ========================================================== */
+/* A. GLOBAL & FONT STACK */
+/* ========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+:root {
+  --color-primary: #1e307e;
+  --color-light-bg: #ebe7e7;
+  --color-text-dark: #333;
+  --color-text-grey: #666;
+
+  /* Warna Status */
+  --color-success: #10b981; /* Emerald/Hijau */
+  --color-warning: #facc15; /* Kuning */
+  --color-danger: #ef4444; /* Merah */
+  --color-info: #3b82f6; /* Biru */
+  --color-secondary: #6b7280; /* Abu-abu */
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--color-light-bg);
+  color: var(--color-text-dark);
+}
+
+/* ========================================================== */
+/* B. CARD & HEADER */
+/* ========================================================== */
+
+.inlet-admin-card {
+  background-color: white;
+  padding: 25px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.inlet-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+.inlet-card-header .inlet-title {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+/* ========================================================== */
+/* C. BUTTONS & INPUT (Termasuk Filter/Search Layout) */
+/* ========================================================== */
+
+/* Layout Flex untuk Filter/Search (Anda harus menambahkannya di PHP) */
+.filter-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.filter-row .search-input {
+  flex-grow: 1; /* Agar input search melebar */
+}
+
+/* Tombol Dasar */
+.inlet-btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.inlet-btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+.inlet-btn-primary:hover {
+  background-color: #1a2963;
+}
+
+/* Input & Select */
+.inlet-form-input,
+.inlet-form-select {
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* ========================================================== */
+/* D. DATA TABLE */
+/* ========================================================== */
+
+.inlet-table-container {
+  overflow-x: auto;
+}
+.inlet-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.inlet-data-table th,
+.inlet-data-table td {
+  padding: 14px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.inlet-data-table th {
+  color: var(--color-text-grey);
+  font-weight: 600;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  text-align: left; /* Default */
+}
+.inlet-data-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Perataan Kolom Khusus */
+.inlet-data-table th.text-center,
+.inlet-data-table td.text-center {
+  text-align: center !important;
+}
+.inlet-data-table th.inlet-col-action,
+.inlet-data-table td[data-label="Aksi"] {
+  text-align: center;
+}
+
+/* ========================================================== */
+/* E. BADGES */
+/* ========================================================== */
+
+.inlet-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+/* Menggunakan variabel warna root */
+.inlet-badge.is-success,
+.inlet-badge.is-publish,
+.inlet-badge.is-active,
+.inlet-badge.is-approved {
+  background-color: var(--color-success);
+  color: white;
+}
+.inlet-badge.is-warning,
+.inlet-badge.is-draft,
+.inlet-badge.is-pending {
+  background-color: var(--color-warning);
+  color: var(--color-text-dark); /* Teks gelap untuk kontras */
+}
+.inlet-badge.is-danger,
+.inlet-badge.is-expired {
+  background-color: var(--color-danger);
+  color: white;
+}
+.inlet-badge.is-info,
+.inlet-badge.is-general {
+  background-color: var(--color-info);
+  color: white;
+}
+.inlet-badge.is-secondary,
+.inlet-badge.is-default,
+.inlet-badge.is-permanen {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+/* ========================================================== */
+/* F. ACTION ICONS (Buttons) */
+/* ========================================================== */
+
+.inlet-action-icons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.inlet-action-icons a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.2s, transform 0.1s;
+}
+.inlet-action-icons a:hover {
+  transform: translateY(-1px);
+}
+.inlet-action-icons span.material-icons-outlined {
+  font-size: 18px;
+  color: white; /* Defaultkan ikon menjadi putih */
+}
+
+/* Warna Spesifik Aksi */
+a[title="Update"] {
+  /* background-color: var(--color-success); */
+}
+a[title="Detail"] {
+  background-color: var(--color-info);
+}
+a[title="Delete"] {
+  /* background-color: var(--color-danger); */
+}
+
+/* Hover Aksi */
+a[title="Update"]:hover {
+  background-color: #059669;
+}
+a[title="Detail"]:hover {
+  background-color: #2563eb;
+}
+a[title="Delete"]:hover {
+  background-color: #dc2626;
+}
+
+/* ========================================================== */
+/* G. PAGINATION */
+/* ========================================================== */
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.page-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: var(--color-primary);
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-left: -1px;
+  font-size: 0.9em;
+  transition: background-color 0.2s;
+}
+
+.page-item:first-child .page-link {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  margin-left: 0;
+}
+.page-item:last-child .page-link {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.page-item.active .page-link {
+  color: white;
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+.page-item:not(.active):not(.disabled) .page-link:hover {
+  background-color: #f0f0f0;
+}
+.page-item.disabled .page-link {
+  color: var(--color-text-grey);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ========================================================== */
+/* H. RESPONSIVE MOBILE (<768px) */
+/* ========================================================== */
+
+@media screen and (max-width: 768px) {
+  .inlet-admin-card {
+    padding: 15px;
+  }
+
+  /* Filter & Search Stacked */
+  .filter-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .inlet-form-input,
+  .inlet-form-select,
+  .inlet-btn {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Card View Table */
+  .inlet-data-table thead {
+    display: none;
+  }
+  .inlet-data-table,
+  .inlet-data-table tbody,
+  .inlet-data-table tr {
+    display: block;
+    width: 100%;
+  }
+  .inlet-data-table tr {
+    margin-bottom: 15px;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .inlet-data-table td {
+    display: block;
+    padding: 8px 0 !important;
+    border-bottom: none;
+    position: relative;
+    padding-left: 50% !important;
+    text-align: left;
+  }
+  .inlet-data-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 45%;
+    padding-left: 10px;
+    font-weight: 600;
+    color: var(--color-text-dark);
+  }
+}

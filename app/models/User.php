@@ -22,7 +22,7 @@ class UserModel {
 
 public function findUserByCredentials($credential) {
     // ASUMSI: Kolom yang ada di database Anda bernama 'password' (bukan 'password_hash')
-    $sql = "SELECT id, username, email, password AS password_hash, role, is_active 
+    $sql = "SELECT id, name, username, email, password AS password_hash, role, is_active 
             FROM {$this->table} 
             WHERE (username = :cred OR email = :cred) AND is_active = TRUE";
             
