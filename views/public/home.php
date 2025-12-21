@@ -88,6 +88,10 @@
 
 <section class="research-snippet-container">
     <h2 class="section-title">Our Research</h2>
+    <p class="about-description">
+        Featuring recent projects and research from Lab INLET, including student innovations 
+        and relevant results in educational technology.
+    </p>
 
     <div class="research-grid">
         <?php 
