@@ -1,4 +1,4 @@
-app/config/config.php
-public/uploads/
-.env
-./uploads
+# app/config/config.php
+# public/uploads/
+# .env
+# ./uploads
