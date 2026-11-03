@@ -84,7 +84,7 @@
         </div>
         
         <br>
-        <div class="pagination-container" style="margin-left: 30px;">
+        <div class="pagination-container">
             <ul class="pagination">
             <?php
             // --- Tombol Sebelumnya (Previous) ---

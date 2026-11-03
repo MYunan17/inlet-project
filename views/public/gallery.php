@@ -31,7 +31,9 @@
             <div class="gallery-item" data-type="<?php echo $type; ?>" data-target="<?php echo $file_url; ?>">
                 
                 <img src="<?php echo BASE_URL; ?>assets/images/gallery/<?php echo $thumbnail; ?>" 
-                     alt="<?php echo $title; ?>">
+                     alt="<?php echo $title; ?>"
+                     loading="lazy"
+                     onerror="this.onerror=null;this.src='<?php echo BASE_URL; ?>assets/images/gallery/default.png';">
                      
                 <?php if ($type === 'video'): ?>
                     <i class="material-icons-outlined play-icon">play_circle_filled</i>

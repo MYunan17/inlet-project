@@ -408,7 +408,38 @@
   margin-bottom: 2rem;
 }
 
-.section-title {
-  position: relative;
-  left: 100px;
+/* --- Penyelarasan judul, pesan kosong, dan pagination dengan grid --- */
+.fasilitas-directory-container .section-title,
+.fasilitas-directory-container .no-data-message,
+.fasilitas-directory-container .pagination-container {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  margin-left: 0;
+  text-align: left;
+}
+
+.fasilitas-directory-container .no-data-message {
+  grid-column: 1 / -1;
+  padding-left: 0;
+  color: #777;
+}
+
+.fasilitas-directory-container .separator-line {
+  margin: 2.5rem 3rem;
+}
+
+@media (max-width: 767px) {
+  .fasilitas-directory-container .section-title,
+  .fasilitas-directory-container .pagination-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .fasilitas-grid {
+    padding: 0 1rem;
+  }
+}
+
+.fasilitas-directory-container .section-title {
+  position: static;
+  display: block;
 }

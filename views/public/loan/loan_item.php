@@ -1,24 +1,3 @@
-<style>
-/* --- CSS Dasar untuk Kerapihan Form (Dihapus agar tidak double, asumsikan sudah di file lain) --- */
-/* (Hanya meninggalkan CSS Alert dan Static Control agar kode tetap valid di sini) */
-.alert-error {
-    padding: 10px;
-    margin-bottom: 15px;
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-    border-radius: 4px;
-}
-.alert-success {
-    padding: 10px;
-    margin-bottom: 15px;
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-    border-radius: 4px;
-}
-</style>
-
 <section class="loan-form-container">
     <h1 class="page-title">FORMULIR PEMINJAMAN PERALATAN</h1>
     <p class="page-subtitle">Pastikan Anda telah mengisi data sesuai ID dan telah membaca S&K Peminjaman.</p>
@@ -31,7 +10,7 @@
         <div class="alert-error"><?php echo htmlspecialchars($error); ?></div>
     <?php endif; ?>
 
-    <form action="<?php echo BASE_URL; ?>loan/item/submit" method="POST" class="standard-form">
+    <form action="<?php echo BASE_URL; ?>loan/submitItem" method="POST" class="standard-form">
     
         <fieldset class="form-section">
             <legend>Informasi Peminjam</legend>

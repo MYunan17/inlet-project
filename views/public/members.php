@@ -83,7 +83,7 @@
         <br>
 
         <!-- Pagination -->
-        <div class="pagination-container" style="margin-left: 30px;">
+        <div class="pagination-container">
             <ul class="pagination">
                 <?php
                 $prev_page = max(1, $current_page - 1);

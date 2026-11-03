@@ -63,3 +63,11 @@
     margin: 0 auto;
   }
 }
+
+/* Visi & Misi di beranda */
+.home-visi-misi {
+  max-width: 1000px;
+  margin: 3rem auto 2rem;
+  padding: 0 1.5rem;
+  text-align: left;
+}

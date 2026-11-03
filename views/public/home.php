@@ -81,8 +81,24 @@
         </div>
     </div>
 
+    <div class="visi-misi-grid home-visi-misi">
+        <div class="visi-item">
+            <h2>Visi</h2>
+            <p>Menjadi <b>pusat unggulan</b> teknologi informasi dan <b>rekayasa pembelajaran</b> yang terintegrasi, menghasilkan solusi inovatif untuk pendidikan dan mendukung daya saing industri digital di tingkat nasional maupun internasional.</p>
+        </div>
+        <div class="misi-item">
+            <h2>Misi</h2>
+            <ul>
+                <li>Melaksanakan riset terapan di bidang Information Engineering dan Learning Technology secara berkelanjutan.</li>
+                <li>Mengembangkan aplikasi dan platform pembelajaran yang adaptif dan berbasis data untuk meningkatkan efektivitas transfer ilmu.</li>
+                <li>Menciptakan lingkungan kolaboratif antara akademisi, mahasiswa, dan industri dalam rangka hilirisasi produk riset.</li>
+                <li>Memberikan kontribusi nyata dalam pengembangan sumber daya manusia melalui kegiatan pengabdian masyarakat dan pelatihan teknologi terkini.</li>
+            </ul>
+        </div>
+    </div>
+
     <div class="about-cta">
-        <a href="/profile" class="btn-primary">Visi & Misi</a>
+        <a href="<?php echo BASE_URL; ?>profile" class="btn-primary">Profil &amp; Sejarah Lengkap</a>
     </div>
 </section>
 

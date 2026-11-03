@@ -1,96 +1,3 @@
-<style>
-/* --- CSS Dasar untuk Kerapihan Form --- */
-.loan-form-container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f7f7f7;
-    font-family: Arial, sans-serif;
-}
-.page-title {
-    text-align: center;
-    color: #333;
-    margin-bottom: 5px;
-}
-.page-subtitle {
-    text-align: center;
-    color: #666;
-    margin-bottom: 20px;
-    font-size: 0.9em;
-}
-.form-group {
-    margin-bottom: 15px;
-}
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
-    color: #444;
-}
-.form-group input, .form-group select, .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; 
-    font-size: 1em;
-}
-.form-section {
-    border: 1px solid #e0e0e0;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    background-color: #fff;
-}
-.form-section legend {
-    font-size: 1.1em;
-    font-weight: bold;
-    color: #007bff;
-    padding: 0 10px;
-}
-.btn-primary {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-/* ALERT STYLES */
-.alert-error {
-    padding: 10px;
-    margin-bottom: 15px;
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-    border-radius: 4px;
-}
-.alert-success {
-    padding: 10px;
-    margin-bottom: 15px;
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-    border-radius: 4px;
-}
-.form-control-static {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #eee;
-    font-weight: bold;
-}
-</style>
-
 <section class="loan-form-container">
     <h1 class="page-title">FORMULIR PEMESANAN RUANGAN/FASILITAS</h1>
     <p class="page-subtitle">Pemesanan Ruangan memerlukan persetujuan Admin (Status Awal: Pending).</p>
@@ -103,7 +10,7 @@
         <div class="alert-error"><?php echo htmlspecialchars($error); ?></div>
     <?php endif; ?>
 
-    <form action="<?php echo BASE_URL; ?>loan/room/submit" method="POST" class="standard-form">
+    <form action="<?php echo BASE_URL; ?>loan/submitRoom" method="POST" class="standard-form">
     
         <fieldset class="form-section">
             <legend>Informasi Peminjam</legend>

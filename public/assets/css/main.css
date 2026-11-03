@@ -1480,3 +1480,9 @@ h2 {
   color: #94a3b8;
   border-color: #e2e8f0;
 }
+
+/* Pagination publik sejajar dengan konten */
+.pagination-container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}

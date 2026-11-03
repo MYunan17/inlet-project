@@ -13,7 +13,7 @@
 <section class="fasilitas-directory-container">
     <div class="content-wrapper">
         
-        <h2 class="section-title" style="margin-left: 70px;">Fasilitas</h2>
+        <h2 class="section-title">Fasilitas</h2>
         <div class="fasilitas-grid">
             
             <?php 
@@ -42,7 +42,7 @@
                 endforeach; 
             else :
             ?>
-                <p class="no-data-message" style="margin-left: 70px;">Saat ini belum ada fasilitas ruangan yang terdaftar.</p>
+                <p class="no-data-message">Saat ini belum ada fasilitas ruangan yang terdaftar.</p>
             <?php
             endif;
             ?>
@@ -50,7 +50,7 @@
 
         <hr class="separator-line">
         
-        <h2 class="section-title" style="margin-left: 70px;">Peralatan Utama</h2>
+        <h2 class="section-title">Peralatan Utama</h2>
         <div class="fasilitas-grid">
             
             <?php 
@@ -82,7 +82,7 @@
                 endforeach; 
             else :
             ?>
-                <p class="no-data-message" style="margin-left: 70px;">Saat ini belum ada peralatan utama yang terdaftar.</p>
+                <p class="no-data-message">Saat ini belum ada peralatan utama yang terdaftar.</p>
             <?php
             endif;
             ?>
@@ -90,7 +90,7 @@
 
         <br>
 
-        <div class="pagination-container" style="margin-left: 30px;">
+        <div class="pagination-container">
             <ul class="pagination">
             <?php
             // Variabel yang dibutuhkan: $current_page dan $total_pages harus tersedia dari Controller.

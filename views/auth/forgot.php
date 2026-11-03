@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lupa Password - InLet CMS</title>
     
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/forgot.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/auth.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 </head>
-<body>
+<body class="auth-simple">
 
 <?php
 $error_message = $error ?? null;
@@ -36,7 +37,7 @@ $email_value = $_POST['email'] ?? ''; // Ambil nilai email dari POST
 
             <button type="submit" class="forgot-btn">
                 <span class="material-icons-outlined">email</span>
-                Kirim Link
+                Kirim Kode
             </button>
 
         </form>
