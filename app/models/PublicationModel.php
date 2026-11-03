@@ -161,7 +161,7 @@ class PublicationModel {
         $sql = "SELECT p.*, m.name AS member_name
                 FROM {$this->table} p
                 LEFT JOIN members m ON p.member_id = m.id
-                ORDER BY p.year DESC, p.created_at DESC";
+                ORDER BY p.created_at DESC";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

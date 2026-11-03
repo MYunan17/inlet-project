@@ -29,9 +29,9 @@ class MembersController {
 
         extract($data);
 
-        include '../views/layouts/header.php';
-        include '../views/layouts/navbar.php';
-        include '../views/public/members.php';
-        include '../views/layouts/footer.php';
+        include ROOT_PATH . 'views/layouts/header.php';
+        include ROOT_PATH . 'views/layouts/navbar.php';
+        include ROOT_PATH . 'views/public/members.php';
+        include ROOT_PATH . 'views/layouts/footer.php';
     }
 }

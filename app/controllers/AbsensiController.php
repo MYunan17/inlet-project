@@ -2,9 +2,9 @@
 
 class AbsensiController {
     public function index() {
-        include '../views/layouts/header.php';
-        include '../views/layouts/navbar.php';
-        include '../views/public/absensi.php';
-        include '../views/layouts/footer.php';
+        include ROOT_PATH . 'views/layouts/header.php';
+        include ROOT_PATH . 'views/layouts/navbar.php';
+        include ROOT_PATH . 'views/public/absensi.php';
+        include ROOT_PATH . 'views/layouts/footer.php';
     }
 }

@@ -69,7 +69,7 @@ class DashboardController {
     private function getAttendanceSummary() {
         try {
             // Hadir hari ini
-            $stmt1 = $this->db->query("SELECT COUNT(*) as hadir FROM student_attendance WHERE status='present' AND DATE(checkin_time) = CURDATE()");
+            $stmt1 = $this->db->query("SELECT COUNT(*) as hadir FROM student_attendance WHERE LOWER(status) = 'present' AND checkin_time::date = CURRENT_DATE");
             $hadir = $stmt1->fetch(PDO::FETCH_ASSOC)['hadir'] ?? 0;
 
             // Total mahasiswa aktif

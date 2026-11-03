@@ -22,7 +22,7 @@
                 
                 foreach ($facilities as $item) :
                     // Tentukan link peminjaman untuk ruangan
-                    $loan_link = BASE_URL . "peminjaman/ruangan/" . htmlspecialchars($item['id']);
+                    $loan_link = BASE_URL . "loan/room";
             ?>
             
             <div class="fasilitas-card" data-type="facility">
@@ -61,7 +61,7 @@
                 
                 foreach ($equipment as $item) :
                     // Tentukan link peminjaman untuk barang
-                    $loan_link = BASE_URL . "peminjaman/barang/" . htmlspecialchars($item['id']);
+                    $loan_link = BASE_URL . "loan/item";
             ?>
             
             <div class="fasilitas-card" data-type="equipment">

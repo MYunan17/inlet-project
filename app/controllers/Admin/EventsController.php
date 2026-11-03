@@ -15,7 +15,7 @@ class EventsController {
 
         // PROTEKSI ADMIN
         if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-            header('Location: ' . BASE_URL . 'login');
+            header('Location: ' . BASE_URL . 'auth/login');
             exit;
         }
 

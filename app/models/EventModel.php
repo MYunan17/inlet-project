@@ -29,7 +29,7 @@ class EventModel {
     public function getAllUpcomingEvents() { 
         $sql = "SELECT id, title, slug, body, start_date, end_date, location, image 
                 FROM {$this->table} 
-                WHERE is_published = 1 
+                WHERE is_published = TRUE
                 AND (end_date >= NOW() OR start_date >= NOW()) 
                 ORDER BY start_date ASC";
         
@@ -39,7 +39,7 @@ class EventModel {
     }
 
     public function getEventBySlug($slug) {
-        $sql = "SELECT * FROM {$this->table} WHERE slug = :slug AND is_published = 1"; 
+        $sql = "SELECT * FROM {$this->table} WHERE slug = :slug AND is_published = TRUE"; 
         $stmt = $this->db->prepare($sql);
         $stmt->execute([':slug' => $slug]); 
         return $stmt->fetch(PDO::FETCH_ASSOC);

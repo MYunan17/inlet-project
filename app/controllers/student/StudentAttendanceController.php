@@ -19,7 +19,7 @@ class StudentAttendanceController
 
         // Pastikan role student
         if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
-            header('Location: ' . BASE_URL . 'login');
+            header('Location: ' . BASE_URL . 'auth/login');
             exit;
         }
 

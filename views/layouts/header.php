@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/detail_research.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/profile.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/members.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/facilty.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/facility.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/activitites.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/detail_activities.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/gallery.css">

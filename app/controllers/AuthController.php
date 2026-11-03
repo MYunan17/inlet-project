@@ -69,6 +69,7 @@ class AuthController {
             if ($user && $user['is_active'] && password_verify($password, $user['password'])) {
 
                 // SET SESSION
+                session_regenerate_id(true);
                 $_SESSION['user_id']  = $user['id'];
                 $_SESSION['name']     = $user['name'];
                 $_SESSION['username'] = $user['username'];
@@ -120,15 +121,16 @@ class AuthController {
                     $_SESSION['reset_user']        = $user['id'];
                     $_SESSION['verification_code'] = $verificationCode;
                     $_SESSION['code_generated_at'] = time();
+                    $_SESSION['code_attempts']     = 0;
 
                     $mail = new PHPMailer(true);
 
                     try {
                         $mail->isSMTP();
-                        $mail->Host       = 'smtp.gmail.com';
+                        $mail->Host       = getenv('MAIL_HOST') ?: 'smtp.gmail.com';
                         $mail->SMTPAuth   = true;
-                        $mail->Username   = 'chentiro.dev@gmail.com';
-                        $mail->Password   = 'aoju xrfg otlz yivd';
+                        $mail->Username   = getenv('MAIL_USER') ?: '';
+                        $mail->Password   = getenv('MAIL_PASS') ?: '';
                         $mail->SMTPSecure = 'tls';
                         $mail->Port       = 587;
 
@@ -138,7 +140,7 @@ class AuthController {
                         $mail->isHTML(true);
                         $mail->Subject = 'Kode Verifikasi Reset Password';
                         $mail->Body    =
-                            "Halo <b>{$user['name']}</b>,<br><br>
+                            "Halo <b>" . htmlspecialchars($user['name']) . "</b>,<br><br>
                              Kode reset password Anda: <b>$verificationCode</b><br>
                              Berlaku selama 10 menit.";
 
@@ -177,8 +179,21 @@ class AuthController {
                   . ($_POST['code3'] ?? '')
                   . ($_POST['code4'] ?? '');
 
+            // Batasi percobaan agar kode 4 digit tidak bisa ditebak
+            $_SESSION['code_attempts'] = ($_SESSION['code_attempts'] ?? 0) + 1;
+            if ($_SESSION['code_attempts'] > 5) {
+                unset(
+                    $_SESSION['reset_user'],
+                    $_SESSION['verification_code'],
+                    $_SESSION['code_generated_at'],
+                    $_SESSION['code_attempts']
+                );
+                header('Location: ' . BASE_URL . 'auth/forgot');
+                exit;
+            }
+
             if (
-                $code == $_SESSION['verification_code'] &&
+                hash_equals((string) $_SESSION['verification_code'], $code) &&
                 (time() - $_SESSION['code_generated_at']) <= 600
             ) {
                 $_SESSION['code_verified'] = true;

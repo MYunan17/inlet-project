@@ -2,3 +2,7 @@
 # public/uploads/
 # .env
 # ./uploads
+.env
+*.pem
+public/uploads/*
+!public/uploads/**/default.*
