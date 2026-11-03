@@ -70,6 +70,7 @@ class AuthController {
 
                 // SET SESSION
                 session_regenerate_id(true);
+                $_SESSION['is_demo']  = !empty($user['is_demo']);
                 $_SESSION['user_id']  = $user['id'];
                 $_SESSION['name']     = $user['name'];
                 $_SESSION['username'] = $user['username'];

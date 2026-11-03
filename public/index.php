@@ -20,6 +20,13 @@ $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
     || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https');
 
 if (session_status() === PHP_SESSION_NONE) {
+    // Hosting serverless: simpan sesi di database agar dibagi antar instance
+    if (getenv('SESSION_DRIVER') === 'database') {
+        require_once ROOT_PATH . 'app/core/Database.php';
+        require_once ROOT_PATH . 'app/core/DbSession.php';
+        session_set_save_handler(new DbSession(Database::getInstance()->getConnection()), true);
+    }
+
     session_set_cookie_params([
         'httponly' => true,
         'secure'   => $isHttps,
@@ -205,6 +212,13 @@ try {
 
     if ($methodName === '' || $methodName[0] === '_' || !is_callable([$controller, $methodName])) {
         inletAbort(404, 'Halaman tidak ditemukan.');
+    }
+
+    // Akun demo hanya boleh melihat: tolak semua aksi yang mengubah data
+    $mutatingMethods = ['approve', 'checkin', 'checkout', 'complete', 'deactivate', 'delete', 'togglepublic'];
+    if (!empty($_SESSION['is_demo']) && $controllerClass !== 'AuthController'
+        && ($_SERVER['REQUEST_METHOD'] !== 'GET' || in_array(strtolower($methodName), $mutatingMethods, true))) {
+        inletAbort(403, 'Akun demo hanya bisa melihat-lihat. Perubahan data dinonaktifkan.');
     }
 
     $reflection = new ReflectionMethod($controller, $methodName);

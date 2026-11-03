@@ -16,6 +16,7 @@ CREATE TABLE users (
     role          VARCHAR(20)  NOT NULL DEFAULT 'student'
                   CHECK (role IN ('admin', 'member', 'student', 'user')),
     is_active     BOOLEAN      NOT NULL DEFAULT TRUE,
+    is_demo       BOOLEAN      NOT NULL DEFAULT FALSE,                     -- akun demo: hanya boleh melihat
     personal_id   VARCHAR(50),                                 -- id di members / students sesuai role
     created_at    TIMESTAMP    NOT NULL DEFAULT NOW(),
     updated_at    TIMESTAMP
@@ -280,5 +281,15 @@ CREATE TABLE room_bookings (
     CHECK (end_time > start_time)
 );
 CREATE INDEX idx_room_bookings_time ON room_bookings (start_time, end_time);
+
+-- ---------------------------------------------------------------
+-- Sesi login (dipakai saat SESSION_DRIVER=database, mis. di Vercel)
+-- ---------------------------------------------------------------
+CREATE TABLE sessions (
+    id         VARCHAR(128) PRIMARY KEY,
+    data       TEXT NOT NULL DEFAULT '',
+    updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+CREATE INDEX idx_sessions_updated ON sessions (updated_at);
 
 COMMIT;
